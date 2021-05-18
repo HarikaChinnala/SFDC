@@ -7,10 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class testpush {
 	
-	
-	@FindBy(xpath="//*[@id='customTab2__item']")
-	public WebElement testedit;
-	
 	@FindBy(xpath="//*[@id='customTab2__item']")
 	public WebElement OppsCont;
 	

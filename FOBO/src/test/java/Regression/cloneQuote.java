@@ -29,10 +29,10 @@ import Regression.Base;
 public class cloneQuote extends Base {
 
 	@Test
-	public void LoginpageNavigation () throws IOException, InterruptedException
+	public void cloneQuote () throws IOException, InterruptedException
 	{
 		Properties prop = new Properties();
-FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
     	prop.load(fis);
 		driver= initialiseDriver();
 		driver.get(prop.getProperty("url"));

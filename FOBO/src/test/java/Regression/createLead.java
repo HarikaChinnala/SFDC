@@ -24,10 +24,10 @@ import Regression.Base;
 public class createLead extends Base {
 
 	@Test
-	public void LoginpageNavigation () throws IOException, InterruptedException
+	public void createLeadandconvert () throws IOException, InterruptedException
 	{
         Properties prop = new Properties();
-    	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+    	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
     	prop.load(fis);
 		driver= initialiseDriver();
 		driver.get(prop.getProperty("url"));
@@ -69,7 +69,7 @@ public class createLead extends Base {
 		clp.getpostalcode().sendKeys(prop.getProperty("postalcode"));
 		clp.getcountry().sendKeys(prop.getProperty("country"));
 		clp.getsave().click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		//convert lead
 		clp.getconvert().click();
 		Thread.sleep(10000);

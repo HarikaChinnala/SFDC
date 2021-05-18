@@ -26,10 +26,10 @@ import Regression.Base;
 public class createContactandEdit extends Base {
 	
 	@Test
-	public void createAccountandEdit () throws IOException, InterruptedException
+	public void createContactandEdit () throws IOException, InterruptedException
 	{
 	Properties prop = new Properties();
-	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
 	    	prop.load(fis);
 	
 			driver= initialiseDriver();

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Regression.cloneQuote">
+      <class name="Regression.createContract">
         <methods>
-          <include name="LoginpageNavigation"/>
+          <include name="createContract"/>
         </methods>
-      </class> <!-- Regression.cloneQuote -->
+      </class> <!-- Regression.createContract -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

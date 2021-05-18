@@ -28,7 +28,7 @@ public class createAccountandEdit extends Base {
 	public void createAccountandEdit () throws IOException, InterruptedException
 	{
 	Properties prop = new Properties();
-	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
 	    	prop.load(fis);
 	
 			driver= initialiseDriver();
@@ -62,8 +62,9 @@ public class createAccountandEdit extends Base {
 		ap.getwebsite().sendKeys(prop.getProperty("websitename"));
 		ap.getsaveAccount().click();
 		Thread.sleep(10000);
+	driver.navigate().refresh();
 	
-			
+	Thread.sleep(5000);
 			js.executeScript("arguments[0].click();", lp.getAccount());
 			Thread.sleep(5000);
 			String existingaccount = prop.getProperty("existingaccountname");

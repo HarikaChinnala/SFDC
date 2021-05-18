@@ -19,6 +19,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Pageobjects.accountPage;
+import Pageobjects.contractPage;
 import Pageobjects.createOppPage;
 import Pageobjects.createQuotePage;
 import Pageobjects.landingPage;
@@ -29,10 +30,10 @@ import Regression.Base;
 public class createContract extends Base {
 
 	@Test
-	public void LoginpageNavigation () throws IOException, InterruptedException
+	public void createContract () throws IOException, InterruptedException
 	{
 		Properties prop = new Properties();
-FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
     	prop.load(fis);
 		driver= initialiseDriver();
 		driver.get(prop.getProperty("url"));
@@ -66,6 +67,7 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepositor
 								+ OppName
 								+ "']")).click();
 		oppPage op= new oppPage(driver);
+		/*
 		js.executeScript("arguments[0].click();", op.getselection());
 		js.executeScript("arguments[0].click();", op.getmark());
 		
@@ -79,14 +81,31 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepositor
 		js.executeScript("arguments[0].click();", op.getcontracting());
 		js.executeScript("arguments[0].click();", op.getmark());
 		Thread.sleep(10000);
+		*/
 		
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		
 		js.executeScript("arguments[0].click();", op.getcontractlink());
 		Thread.sleep(5000);
 		
+		contractPage cp= new contractPage(driver);
+		js.executeScript("arguments[0].click();", cp.getRelated());
+	
+		
+		js.executeScript("arguments[0].click();", cp.getmanageclauses());
+		
+		Thread.sleep(5000);
+		
+		int count= driver.findElements(By.xpath("//*[@role='grid']/tbody/tr")).size();
+		System.out.println(count);
+		
+		if(count>0)
+			System.out.println("Manage clauses are generated");
+		else 
+			System.out.println("Manage clauses are not generated");
 		
 		
+		driver.navigate().back();
 	}
 }

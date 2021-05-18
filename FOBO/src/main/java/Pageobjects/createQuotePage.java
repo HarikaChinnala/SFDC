@@ -12,7 +12,7 @@ public class createQuotePage {
 @FindBy(xpath="(//*[@class='select'])[2]")
 public WebElement RNperiod;
 
-@FindBy(xpath="//*[@class='modal-footer slds-modal__footer']/button[2]")
+@FindBy(xpath="//*[@class='slds-modal__footer']/button[2]")
 public WebElement save;
 
 @FindBy(xpath="//button[contains(text(),'Generate Quote Proposal')]")
@@ -30,14 +30,14 @@ public WebElement dropdown;
 @FindBy(xpath="(//*[@data-key='down'][@class='slds-button__icon'][@viewBox='0 0 52 52'])[2]")
 public WebElement dropdown2;
 
-@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Submit_for_Approval']")
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Submit_for_Approval']")
 public WebElement submitapproval;
 
 
-@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='SBQQ__CloneWithRelated']")
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='SBQQ__CloneWithRelated']")
 public WebElement clonequote;
 
-@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Edit']")
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Edit']")
 public WebElement Edit;
 
 @FindBy(xpath="(//*[contains(text(),'Primary')]/parent::label)/following-sibling::div/span/*[@type='checkbox']")

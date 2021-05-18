@@ -24,7 +24,7 @@ public class Base {
 	
 		Properties prop = new Properties();
     	
-    	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\workspace\\FOBO\\src\\main\\java\\Regression\\data.properties");
+    	FileInputStream fis = new FileInputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
     	
     	prop.load(fis);
     	

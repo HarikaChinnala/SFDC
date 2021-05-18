@@ -48,6 +48,13 @@ public WebElement primcntct;
 @FindBy(xpath="//label[contains(text(),'Billing Contact')]/following-sibling::div[1]/div[1]/lightning-base-combobox/div[1]/div/input")
 public WebElement Billcntct;
 
+
+@FindBy(xpath="//label[contains(text(),'Pilot?')]/following-sibling::div[1]/lightning-base-combobox/div/div/input")
+public WebElement pilot;
+
+@FindBy(xpath="//label[contains(text(),'Found by Channel?')]/following-sibling::div[1]/lightning-base-combobox/div/div/input")
+public WebElement foundbychannel;
+
 @FindBy(xpath="(//*[@role='listbox'])[2]/div[2]")
 public WebElement selectcurrency;
 
@@ -91,6 +98,15 @@ public WebElement ucDNS;
 
 @FindBy(xpath="//*[@title='Security Services, LLC']")
 public WebElement enSSL;
+
+@FindBy(xpath="//*[@title='--None--']")
+public WebElement None;
+
+@FindBy(xpath="//*[@title='Yes']")
+public WebElement Yes;
+
+@FindBy(xpath="//*[@title='No']")
+public WebElement No;
 
 public createOppPage(WebDriver driver) {
 	// TODO Auto-generated constructor stub
@@ -208,6 +224,26 @@ public WebElement getucDNS(){
 public WebElement getenSSL(){
 	return  enSSL;
 } 
+
+public WebElement getpilot(){
+	return  pilot;
+} 
+
+public WebElement getfoundbychannel(){
+	return  foundbychannel;
+} 
+
+public WebElement getNone(){
+	return  None;
+}
+
+public WebElement getYes(){
+	return  Yes;
+}
+
+public WebElement getNo(){
+	return  No;
+}
 
 	
 }

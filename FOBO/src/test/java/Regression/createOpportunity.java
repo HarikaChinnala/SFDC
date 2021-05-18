@@ -25,10 +25,10 @@ import Regression.Base;
 public class createOpportunity extends Base {
 
 	@Test
-	public void LoginpageNavigation () throws IOException, InterruptedException
+	public void createOpportunity () throws IOException, InterruptedException
 	{
 		Properties prop = new Properties();
-FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepository\\FOBO\\src\\main\\java\\Regression\\data.properties");
+FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
     	prop.load(fis);
 		driver= initialiseDriver();
 		driver.get(prop.getProperty("url"));
@@ -77,7 +77,7 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepositor
 		String usd=prop.getProperty("currency");
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("(//*[@title='"
 									+ usd
-									+ "'])[2]")));
+									+ "'])[3]")));
 		
 		js.executeScript("arguments[0].click();", cop.getcloseDate());
 		cop.getToday().click();
@@ -90,6 +90,12 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepositor
 		driver.findElement(By.xpath("//*[@title='"
 									+ opptype
 									+ "']")).click();;
+									
+		js.executeScript("arguments[0].click();",cop.getpilot());
+		String pilotvalue=prop.getProperty("pilotvalue");
+		driver.findElement(By.xpath("//*[@title='"
+											+ pilotvalue
+											+ "']")).click();
 		String sellinglane=prop.getProperty("sellinglane");
 		js.executeScript("arguments[0].click();", cop.getsellinglane());
 		driver.findElement(By.xpath("//*[@title='"
@@ -129,7 +135,14 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\Foborepositor
 		driver.findElement(By.xpath("//label[contains(text(),'Billing Contact')]/following-sibling::div[1]/div[1]/lightning-base-combobox/div/div[2]/ul/li/lightning-base-combobox-item/span[2]/span/lightning-base-combobox-formatted-text[@title='"
 				+ primarycontact
 				+ "']")).click();
-		
+		//System.out.println(cop.getfoundbychannel().isEnabled());
+		if(cop.getfoundbychannel().isEnabled()){
+		js.executeScript("arguments[0].click();",cop.getfoundbychannel());
+		String foundbychannel=prop.getProperty("foundbychannel");
+		driver.findElement(By.xpath("(//*[@title='"
+				+ foundbychannel
+				+ "'])[2]")).click();
+		}
 		cop.getsave().click();
 		Thread.sleep(10000);
 		driver.close();

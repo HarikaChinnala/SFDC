@@ -31,13 +31,13 @@ public WebElement mark;
 @FindBy(xpath="//*[@name='Opportunity.Contract']")
 public WebElement contract;
 
-@FindBy(xpath="//div[@class='modal-footer slds-modal__footer']/button[2]")
+@FindBy(xpath="//*[@class='slds-modal__footer']/button[2]")
 public WebElement contractsave;
 
 @FindBy(xpath="//*[@title='4 - Contracting']")
 public WebElement contracting;
 
-@FindBy(xpath="//*[@class='container forceRelatedListSingleContainer']/article/div[2]/div/div/div/div/ul/li/div[2]/h3/div/a")
+@FindBy(xpath="//*[@class='container forceRelatedListSingleContainer']/article/div[2]/div/div/div/div/ul/li/article/div/div[1]/h3/div/a")
 public WebElement contractlink;
 
 
