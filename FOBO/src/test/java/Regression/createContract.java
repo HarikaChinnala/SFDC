@@ -32,42 +32,24 @@ public class createContract extends Base {
 	@Test
 	public void createContract () throws IOException, InterruptedException
 	{
-		Properties prop = new Properties();
-FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
-    	prop.load(fis);
+		
 		driver= initialiseDriver();
-		driver.get(prop.getProperty("url"));
-		loginPageObject l = new loginPageObject(driver);
-		l.getusername().sendKeys(prop.getProperty("username"));
-		l.getpassword().sendKeys(prop.getProperty("pwd"));
-		l.getLogin().click();
-		try {
-			l.clickskip().click();
-			}
-			catch(Exception e) {
-			 // driver.navigate().refresh();
-			}
-		Thread.sleep(2000);
-		try {
-			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
-		}
-			catch(Exception e) { 
-		}
-
 		landingPage lp= new landingPage(driver);
+		contractPage cp= new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		//driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005DmXAAU/view");
 		js.executeScript("arguments[0].click();", lp.getOpportunities());
 		Thread.sleep(5000);
-		lp.getopptxtbox().sendKeys(prop.getProperty("OppName"));
+		lp.getopptxtbox().sendKeys(OppName);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
-		String OppName = prop.getProperty("OppName");
+		//String OppName = prop.getProperty("OppName");
 		driver.findElement(By.xpath("//*[@title='"
 								+ OppName
 								+ "']")).click();
 		oppPage op= new oppPage(driver);
-		/*
+		
 		js.executeScript("arguments[0].click();", op.getselection());
 		js.executeScript("arguments[0].click();", op.getmark());
 		
@@ -81,19 +63,35 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO
 		js.executeScript("arguments[0].click();", op.getcontracting());
 		js.executeScript("arguments[0].click();", op.getmark());
 		Thread.sleep(10000);
-		*/
+		
 		
 		driver.navigate().refresh();
 		Thread.sleep(10000);
-		
+		 String url=driver.getCurrentUrl();
+	        if(url.contains("ltnstage")){
 		js.executeScript("arguments[0].click();", op.getcontractlink());
 		Thread.sleep(5000);
+	        }
+	        else
+	        	js.executeScript("arguments[0].click();", op.getcontractlinkuat());
+			
+	        Thread.sleep(5000);
+	        driver.navigate().refresh();
+	        Thread.sleep(5000);
 		
-		contractPage cp= new contractPage(driver);
-		js.executeScript("arguments[0].click();", cp.getRelated());
+		
+		try{
+		js.executeScript("arguments[0].click();", cp.getRelated());}
+		catch (Exception e3){
+			driver.findElement(By.xpath("//*[@class='tabs__nav']/li/a[@title='Related']")).click();
+		}
 	
-		
+		try{
 		js.executeScript("arguments[0].click();", cp.getmanageclauses());
+		}
+		catch (Exception e2){
+			driver.findElement(By.xpath("(//*[@title='Managed Clauses'])[2]")).click();
+		}
 		
 		Thread.sleep(5000);
 		
@@ -107,5 +105,9 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO
 		
 		
 		driver.navigate().back();
+		
+	driver.close();
+	        
+		
 	}
 }

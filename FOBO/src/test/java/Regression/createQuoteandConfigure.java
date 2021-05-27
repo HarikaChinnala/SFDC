@@ -24,62 +24,55 @@ import Pageobjects.createQuotePage;
 import Pageobjects.landingPage;
 import Pageobjects.loginPageObject;
 import Pageobjects.oppPage;
+import Pageobjects.reusablemethods;
 import Regression.Base;
 
 public class createQuoteandConfigure extends Base {
-
-	@Test
-	public void createQuoteandConfigure () throws IOException, InterruptedException
+	
+	
+	@Test(priority=1)
+	public void createQuote() throws IOException, InterruptedException
 	{
-		Properties prop = new Properties();
-FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
-    	prop.load(fis);
-		driver= initialiseDriver();
-		driver.get(prop.getProperty("url"));
-		loginPageObject l = new loginPageObject(driver);
-		l.getusername().sendKeys(prop.getProperty("username"));
-		l.getpassword().sendKeys(prop.getProperty("pwd"));
-		l.getLogin().click();
-		try {
-			l.clickskip().click();
-			}
-			catch(Exception e) {
-			 // driver.navigate().refresh();
-			}
-		Thread.sleep(2000);
-		try {
-			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
-		}
-			catch(Exception e) { 
-		}
-
+		driver= initialiseDriver();	
 		landingPage lp= new landingPage(driver);
+		createQuotePage qp= new createQuotePage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", lp.getOpportunities());
+		
 		Thread.sleep(5000);
-		lp.getopptxtbox().sendKeys(prop.getProperty("OppName"));
+		try{
+		js.executeScript("arguments[0].click();", lp.getOpportunities());}
+		catch (Exception e1){
+			driver.findElement(By.cssSelector("[title='Opportunities']")).click();
+		}
+		//lp.getOpportunities().click();
+		Thread.sleep(5000);
+		lp.getopptxtbox().sendKeys(OppName);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
-		String OppName = prop.getProperty("OppName");
+		//String OppName = prop.getProperty("OppName");
 		driver.findElement(By.xpath("//*[@title='"
 								+ OppName
 								+ "']")).click();
 		Thread.sleep(10000);
 		js.executeScript("arguments[0].click();", lp.getnewQuote()); 
-		createQuotePage qp= new createQuotePage(driver);
+		
 		Thread.sleep(20000);
 		js.executeScript("arguments[0].click();",qp.getRNperiod());
 		Thread.sleep(5000);
-		String RNperiod = prop.getProperty("RNperiod");
+		//String RNperiod = prop.getProperty("RNperiod");
 		driver.findElement(By.xpath("//*[@title='"
 				+ RNperiod
 				+ "']")).click();
 		
 		qp.getsave().click();
 		Thread.sleep(5000);
-		//driver.navigate().refresh();
-		oppPage op= new oppPage(driver);
+	}
+		@Test(priority=2)
+		public void configureQuote() throws IOException, InterruptedException
+		{
+			oppPage op= new oppPage(driver);
+			JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", op.getDetail());
 		Thread.sleep(30000);
 		//driver.findElement(By.xpath("(//*[contains(text(),'Primary Quote')]/parent::div)/following-sibling::div[1]/span/slot/slot/force-lookup/div/force-hoverable-link/div/a/span[@id='window']")).click();
@@ -153,58 +146,17 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO
        }
         driver.navigate().refresh();
         Thread.sleep(10000);
+		}
+		
+		@Test(priority=3)
+		public void generatequoteproposal() throws IOException, InterruptedException
+		{
+		createQuotePage qp= new createQuotePage(driver);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		reusablemethods rm= new reusablemethods(driver);
         js.executeScript("arguments[0].click();", qp.getGenquoteprop());
         Thread.sleep(60000);
- int k= driver.findElements(By.xpath("//iframe")).size();
- System.out.println(k);
- for(int b=0; b<k; b++){
- 	driver.switchTo().frame(b);
- 	//WebElement con =driver.findElement(By.xpath("//*[contains(text(),'Continue')]"));
- 	//if(driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).isEnabled()==true){
- 	try{	
- 		driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
- 	}
- 	catch (Exception e){
- 	
- 	 int m= driver.findElements(By.xpath("//iframe")).size();
- 	 System.out.println(m);
- 	 if(m>0){
- 		for(int c=0; c<m; c++){
-     	driver.switchTo().frame(c); 
-        //if(driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).isEnabled()==true){	
-  try{	
-	  driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
-        	}
-    	catch (Exception ex){
-    		int n= driver.findElements(By.xpath("//iframe")).size();
-    	 	 System.out.println(n);
-    	 	 if(n>0){
-    	 		for(int d=0; d<n; d++){
-    	     	driver.switchTo().frame(d); 
-    	        //if(driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).isEnabled()==true){	
-    	  try{	
-    		  driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
-    	        	}
-    	    	catch (Exception exc){
-      	driver.switchTo().defaultContent();
-    	}
- 		}
-        }
- 		else{
- 			driver.switchTo().defaultContent();
- 		}
- 	 }
- 	}
- 	 }
- 		else{
- 			driver.switchTo().defaultContent();
- 		}
- 	}
- }
-        Thread.sleep(10000);
-        driver.switchTo().defaultContent();
-        Thread.sleep(20000);
-        
+        rm.generatedoc(driver);
         js.executeScript("arguments[0].click();", qp.getRelated()); 
         Thread.sleep(10000);
         String file=qp.getFiles().getAttribute("title");
@@ -212,14 +164,25 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO
         System.out.println("File is attached");
         else
         	System.out.println("File is not attached");
-      //js.executeScript("arguments[0].click();", qp.getdropdown());
-      //js.executeScript("arguments[0].click();", qp.getsubmitapproval());
+		}
+		@Test(priority=4)
+		public void approveQuote() throws IOException, InterruptedException
+		{
+			
+			createQuotePage qp= new createQuotePage(driver);
+			JavascriptExecutor js = (JavascriptExecutor)driver;
         qp.getdropdown().click();
         Thread.sleep(5000);
         //qp.getsubmitapproval().click();
+        String url=driver.getCurrentUrl();
+        
+        if(url.contains("ltnstage")){
         js.executeScript("arguments[0].click();", qp.getsubmitapproval());
         Thread.sleep(10000);
-        
+        }
+        else
+        	js.executeScript("arguments[0].click();", qp.getsubmitapprovaluat());
+        Thread.sleep(10000);
         String app = qp.getapproved().getAttribute("aria-selected");
         System.out.println(app);
         if (app.equals("true")){
@@ -229,8 +192,5 @@ FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO
         	System.out.println("Quote is not approved");
         driver.close();
         }
-		
-
-	
 	
 }

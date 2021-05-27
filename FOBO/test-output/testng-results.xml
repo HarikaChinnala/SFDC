@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="88792" started-at="2021-05-17T13:52:09Z" finished-at="2021-05-17T13:53:38Z">
+  <suite name="Default suite" duration-ms="95338" started-at="2021-05-26T16:19:40Z" finished-at="2021-05-26T16:21:15Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="88792" started-at="2021-05-17T13:52:09Z" finished-at="2021-05-17T13:53:38Z">
-      <class name="Regression.createContract">
-        <test-method status="PASS" signature="createContract()[pri:0, instance:Regression.createContract@cb5822]" name="createContract" duration-ms="88745" started-at="2021-05-17T19:22:09Z" finished-at="2021-05-17T19:23:38Z">
+    <test name="Default test" duration-ms="95338" started-at="2021-05-26T16:19:40Z" finished-at="2021-05-26T16:21:15Z">
+      <class name="Regression.amendContract">
+        <test-method status="PASS" signature="amendContract()[pri:0, instance:Regression.amendContract@cb5822]" name="amendContract" duration-ms="95319" started-at="2021-05-26T21:49:40Z" finished-at="2021-05-26T21:51:15Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createContract -->
-      </class> <!-- Regression.createContract -->
+        </test-method> <!-- amendContract -->
+      </class> <!-- Regression.amendContract -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

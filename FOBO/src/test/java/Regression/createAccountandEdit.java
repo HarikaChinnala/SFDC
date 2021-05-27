@@ -24,57 +24,44 @@ import Regression.Base;
 
 public class createAccountandEdit extends Base {
 	
-	@Test
-	public void createAccountandEdit () throws IOException, InterruptedException
-	{
-	Properties prop = new Properties();
-	FileInputStream fis = new FileInputStream("C:\\Users\\966790\\git\\newrepo\\FOBO\\src\\main\\java\\Regression\\data.properties");
-	    	prop.load(fis);
 	
-			driver= initialiseDriver();
-			driver.get(prop.getProperty("url"));
-		Thread.sleep(10000);
-		loginPageObject l = new loginPageObject(driver);
-		l.getusername().sendKeys(prop.getProperty("username"));
-		l.getpassword().sendKeys(prop.getProperty("pwd"));
-		l.getLogin().click();
-		try {
-			l.clickskip().click();
-			}
-			catch(Exception e) {
-			  driver.navigate().refresh();
-			}
-		
-		Thread.sleep(2000);
-		try {
-			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
-		}
-			catch(Exception e) { 
-		}
+	@Test(priority=1)
+	public void createAccount() throws IOException, InterruptedException
+	{
+		driver= initialiseDriver();
 		Thread.sleep(2000);	
 		landingPage lp= new landingPage(driver);
+		accountPage ap= new accountPage(driver);
+		
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", lp.getAccount());
 		Thread.sleep(5000);
-		accountPage ap= new accountPage(driver);
+		
 		js.executeScript("arguments[0].click();", ap.getNewAccount());
-		ap.getAccountNamefield().sendKeys(prop.getProperty("NewAccountname"));
-		ap.getwebsite().sendKeys(prop.getProperty("websitename"));
+		ap.getAccountNamefield().sendKeys(NewAccountname);
+		ap.getwebsite().sendKeys(websitename);
 		ap.getsaveAccount().click();
 		Thread.sleep(10000);
 	driver.navigate().refresh();
-	
+	}
+	@Test(priority=2)
+	public void editAccount() throws IOException, InterruptedException
+	{
 	Thread.sleep(5000);
+	JavascriptExecutor js = (JavascriptExecutor)driver;
+	landingPage lp= new landingPage(driver);
+	accountPage ap= new accountPage(driver);
+	
 			js.executeScript("arguments[0].click();", lp.getAccount());
-			Thread.sleep(5000);
-			String existingaccount = prop.getProperty("existingaccountname");
+			Thread.sleep(10000);
+			//String existingaccount = prop.getProperty("existingaccountname");
 			driver.findElement(By.xpath("//*[text()='"
-									+ existingaccount
+									+ existingaccountname
 									+ "']")).click();
 	
 			ap.getedit().click();
 			ap.getwebsite().clear();
-			ap.getwebsite().sendKeys(prop.getProperty("websitename"));
+			ap.getwebsite().sendKeys(websitename);
 			ap.getsaveAccount().click();
 			//driver.findElement(By.xpath("(//*[text()='Save'])[2]")).click();
 			Thread.sleep(5000);

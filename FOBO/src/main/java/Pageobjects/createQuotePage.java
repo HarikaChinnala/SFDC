@@ -12,7 +12,7 @@ public class createQuotePage {
 @FindBy(xpath="(//*[@class='select'])[2]")
 public WebElement RNperiod;
 
-@FindBy(xpath="//*[@class='slds-modal__footer']/button[2]")
+@FindBy(xpath="//*[contains(@class,'slds-modal__footer')]/button[2]")
 public WebElement save;
 
 @FindBy(xpath="//button[contains(text(),'Generate Quote Proposal')]")
@@ -31,14 +31,23 @@ public WebElement dropdown;
 public WebElement dropdown2;
 
 @FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Submit_for_Approval']")
+public WebElement submitapprovaluat;
+
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Submit_for_Approval']")
 public WebElement submitapproval;
 
 
 @FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='SBQQ__CloneWithRelated']")
+public WebElement clonequoteuat;
+
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='SBQQ__CloneWithRelated']")
 public WebElement clonequote;
 
-@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Edit']")
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-page-reference-action/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Edit']")
 public WebElement Edit;
+
+@FindBy(xpath="//*[@class='slds-dropdown slds-dropdown_right']/div/slot/runtime_platform_actions-action-renderer/runtime_platform_actions-executor-page-reference/slot/slot/runtime_platform_actions-ribbon-menu-item/a[@name='Edit']")
+public WebElement Edituat;
 
 @FindBy(xpath="(//*[contains(text(),'Primary')]/parent::label)/following-sibling::div/span/*[@type='checkbox']")
 public WebElement primcheck;
@@ -92,11 +101,22 @@ public WebElement getclonequote(){
 	return clonequote;
 }
 
+public WebElement getsubmitapprovaluat(){
+	return submitapprovaluat;
+}
+
+public WebElement getclonequoteuat(){
+	return clonequoteuat;
+}
 public WebElement getclone(){
 	return clone;
 }
 
 public WebElement getEdit(){
+	return Edit;
+}
+
+public WebElement getEdituat(){
 	return Edit;
 }
 

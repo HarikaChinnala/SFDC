@@ -41,6 +41,12 @@ public WebDriver driver;
 	@FindBy(xpath="//*[@name='Opportunity.New_Quote']")
 	public WebElement newQuote;
 	
+	@FindBy(xpath="//*[@class='slds-truncate'][contains(text(),'Contracts')]")
+	public WebElement contracts;
+	
+	@FindBy(xpath="//*[@name='Contract-search-input']")
+	public WebElement contracttxtbox;
+	
 	public landingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		//this.driver=driver;
@@ -91,6 +97,14 @@ public WebDriver driver;
 	
 	public WebElement getquotetxtbox(){
 		return quotetxtbox;
+	}
+	
+	public WebElement getcontracts(){
+		return contracts;
+	}
+	
+	public WebElement getcontracttxtbox(){
+		return contracttxtbox;
 	}
 	
 }
