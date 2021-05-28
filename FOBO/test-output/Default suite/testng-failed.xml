@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Regression.activateContract">
+      <class name="Regression.contractSubmitForSignature">
         <methods>
-          <include name="awaitingactivation"/>
-          <include name="attentionrequired"/>
+          <include name="contractSubmitForSignature"/>
         </methods>
-      </class> <!-- Regression.activateContract -->
+      </class> <!-- Regression.contractSubmitForSignature -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

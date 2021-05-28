@@ -28,7 +28,8 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 public class createContract extends Base {
-
+//public String contracturl;
+//public String contractid;
 	@Test
 	public void createContract () throws IOException, InterruptedException
 	{
@@ -77,11 +78,14 @@ public class createContract extends Base {
 			
 	        Thread.sleep(5000);
 	        driver.navigate().refresh();
-	        
+	        String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
+	        System.out.println("Contract Status is:"+stat);
 	        // to be sent to data.prop file
-	        String contracturl = driver.getCurrentUrl();
-	        String contractid= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
-	        System.out.println(contractid);
+	        String  curl = driver.getCurrentUrl();
+	       String  id= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
+	        System.out.println("Contractid is:"+id);
+	        System.out.println("Contracturl"+curl);
+	        
 	        Thread.sleep(5000);
 		
 		

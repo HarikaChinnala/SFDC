@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" preserve-order="true" thread-count="1">
+<suite name="Suite" preserve-order="true" thread-count="10">
   <test name="Test">
     <classes>
     <!--    <class name="Regression.createAccountandEdit"/>
@@ -10,11 +10,13 @@
       <class name="Regression.createQuoteandConfigure"/>
       <class name="Regression.createContract"/>
       <class name="Regression.contractSubmitEdit"/>
-      <class name="Regression.contractSubmitForSignature"/>
       <class name="Regression.eSignature"/>
+      <class name="Regression.contractSubmitForSignature"/>     
       <class name="Regression.activateContract"/>
-      <class name="Regression.createAmendOpportunity"/>
+      <class name="Regression.createAmendmentOpportunity"/>
+      <class name="Regression.amendmentSubmitEdit"/>
       <class name="Regression.eSignatureAmendment"/>
+      <class name="Regression.amendmentSubmitForSignature.java"/>
       <class name="Regression.amendContract"/>
       
     </classes>

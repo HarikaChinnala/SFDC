@@ -33,13 +33,16 @@ public class cloneQuote extends Base {
 		driver= initialiseDriver();
 		landingPage lp= new landingPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		/*createQuoteandConfigure cqc= new createQuoteandConfigure();
+		String existquote= cqc.existquote;
+		System.out.println(existquote);*/
 		js.executeScript("arguments[0].click();", lp.getQuote());
 		Thread.sleep(5000);
 		lp.getquotetxtbox().sendKeys(existquote);
 		lp.getquotetxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
-		//String existquote = prop.getProperty("existquote");
+		//String existquote = cqc.configureQuote().existquote;
 		driver.findElement(By.xpath("//*[@title='"
 								+ existquote
 								+ "']")).click();

@@ -46,6 +46,7 @@ public class eSignature extends Base {
 		
 		driver= initialiseDriver();
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		createContract cc=new createContract();
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.profile-link-label.logout.uiOutputURL")));
@@ -99,12 +100,12 @@ public class eSignature extends Base {
 		
 		Thread.sleep(10000);
 		int j=driver.findElements(By.xpath("//iframe")).size();
-		System.out.println(j);
+		//System.out.println(j);
 	    for(int a=0; a<j; a++){
 	    	driver.switchTo().frame(a);
 		try{	
 	    		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@id='topButtonRow']/input[4][@name='login']")));
-	    		System.out.println("clicked login");
+	    		//System.out.println("clicked login");
 	    		Thread.sleep(5000);
 	    		}
 	    	catch (Exception e){
@@ -134,7 +135,7 @@ public class eSignature extends Base {
 		
 		cp.getdropdown().click();
 		js.executeScript("arguments[0].click();", cp.getGenerateDoc());
-		 Thread.sleep(60000);
+		 Thread.sleep(80000);
 		 rm.generatedoc(driver);
 		
 	        Thread.sleep(20000);
@@ -225,9 +226,13 @@ public class eSignature extends Base {
 			        else 
 			        	System.out.println("Stage not moved to Pending Customer Signature");
 			        
+			      //loop to compensate manual interruption for signing document
 			        for(int m=0;m<=5;m++)
 			        {
 			        	driver.navigate().refresh();
+			        String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
+			        if(stat.equals("Client Signed"))
+			        	break;
 			        	Thread.sleep(20000);
 			        	
 			        }

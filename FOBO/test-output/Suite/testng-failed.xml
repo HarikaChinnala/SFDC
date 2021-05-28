@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="10" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="Regression.contractSubmitForSignature">
+        <methods>
+          <include name="contractSubmitForSignature"/>
+        </methods>
+      </class> <!-- Regression.contractSubmitForSignature -->
+      <class name="Regression.createAmendmentOpportunity">
+        <methods>
+          <include name="createAmendmentOpportunity"/>
+        </methods>
+      </class> <!-- Regression.createAmendmentOpportunity -->
+      <class name="Regression.activateContract">
+        <methods>
+          <include name="awaitingactivation"/>
+          <include name="contractactivation"/>
+          <include name="attentionrequired"/>
+        </methods>
+      </class> <!-- Regression.activateContract -->
+      <class name="Regression.contractSubmitEdit">
+        <methods>
+          <include name="Submitedit"/>
+        </methods>
+      </class> <!-- Regression.contractSubmitEdit -->
+      <class name="Regression.eSignature">
+        <methods>
+          <include name="eSignature"/>
+        </methods>
+      </class> <!-- Regression.eSignature -->
+      <class name="Regression.amendContract">
+        <methods>
+          <include name="amendContract"/>
+        </methods>
+      </class> <!-- Regression.amendContract -->
+      <class name="Regression.eSignatureAmendment">
+        <methods>
+          <include name="eSignatureAmendment"/>
+        </methods>
+      </class> <!-- Regression.eSignatureAmendment -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

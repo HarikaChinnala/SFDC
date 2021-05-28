@@ -119,7 +119,7 @@ public WebElement Cases_Section;
 
 
 //@FindBy(xpath="//table[@role='grid']/tbody/tr/th/span/a")
-@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request -- Security')]/parent::span/parent::td/preceding-sibling::th/span/a")
+@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request')]/parent::span/parent::td/preceding-sibling::th/span/a")
 public WebElement Case_SubmitEdit;
 
 @FindBy(xpath="(((//*[text() = 'Case Owner'])//parent::div)//following-sibling::div)/span/slot/slot/force-owner-lookup/div/span")
@@ -149,7 +149,7 @@ public WebElement SubmitForSignature;
 @FindBy(xpath="//*[@data-name='Submission Under Review']")
 public WebElement Chevron_SubmissionUnderReview;
 
-@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission -- Security')]/parent::span/parent::td/preceding-sibling::th/span/a")
+@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission')]/parent::span/parent::td/preceding-sibling::th/span/a")
 public WebElement Case_SubmitForSignature;
 
 

@@ -33,10 +33,11 @@ public class amendContract extends Base {
 	public void amendContract() throws IOException, InterruptedException
 	{
 		driver= initialiseDriver();
+		createAmendmentOpportunity cap=new createAmendmentOpportunity();
 		oppPage op= new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		driver.get(amendurl);
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		String amendstatus = op.getAmendcontractstatus().getText();
 		
 		if(amendstatus.equals("Activated"))

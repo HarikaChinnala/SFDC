@@ -42,6 +42,29 @@ public class eSignatureAmendment extends Base {
 		reusablemethods rm= new reusablemethods(driver);
 		oppPage op= new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		createAmendmentOpportunity cap=new createAmendmentOpportunity();
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));
+		Thread.sleep(5000);
+		js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.profile-link-label.logout.uiOutputURL")));
+		Thread.sleep(10000);
+		//login as admin
+		
+		loginPageObject l = new loginPageObject(driver);
+		l.getusername().sendKeys(usernameadmin);
+		l.getpassword().sendKeys(pwd);
+		l.getLogin().click();
+		try {
+			l.clickskip().click();
+			}
+			catch(Exception e) {
+			 // driver.navigate().refresh();
+			}
+		Thread.sleep(3000);
+		try {
+			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
+		}
+			catch(Exception e) { 
+		}
 		 String URL= driver.getCurrentUrl();
 		    //System.out.println(URL);
 		    //userid= prop.getProperty("userid");
@@ -59,12 +82,12 @@ public class eSignatureAmendment extends Base {
 			driver.findElement(By.xpath("//*[@title='User Detail']")).click();
 			Thread.sleep(10000);
 			int j=driver.findElements(By.xpath("//iframe")).size();
-			System.out.println(j);
+			//System.out.println(j);
 		    for(int a=0; a<j; a++){
 		    	driver.switchTo().frame(a);
 			try{	
 		    		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@id='topButtonRow']/input[4][@name='login']")));
-		    		System.out.println("clicked login");
+		    		//System.out.println("clicked login");
 		    		Thread.sleep(5000);
 		    		}
 		    	catch (Exception e){
@@ -101,7 +124,7 @@ public class eSignatureAmendment extends Base {
 		
 		//cp.getdropdown().click();
 		js.executeScript("arguments[0].click();", op.getGenamend());
-		 Thread.sleep(60000);
+		 Thread.sleep(80000);
 		 rm.generatedoc(driver);
 	        
 	        }
@@ -117,8 +140,9 @@ public class eSignatureAmendment extends Base {
 	        }
 	        Thread.sleep(5000);
 	        driver.navigate().refresh();
-	        Thread.sleep(5000);
+	        Thread.sleep(10000);
 	        op.getdropdown().click();
+	        Thread.sleep(2000);
 		
 		js.executeScript("arguments[0].click();", op.getesign());
 		Thread.sleep(100000);
@@ -190,7 +214,8 @@ public class eSignatureAmendment extends Base {
 			        }
 			        else 
 			        	System.out.println("Stage not moved to Pending Customer Signature");
-			   */     
+			   */  
+			        //loop to compensate manual interruption for signing document
 			        for(int m=0;m<=5;m++)
 			        {
 			        	driver.navigate().refresh();
@@ -201,6 +226,8 @@ public class eSignatureAmendment extends Base {
 // String status = op.getAmendcontractstatus().getText();
 			        System.out.println(status);
 			        try{
+			        	js.executeScript("arguments[0].click();", op.getRelated());
+			        	
 						String agreementstatus= driver.findElement(By.xpath("((((//*[contains(text(),'"
 									+ agreementname
 									+ "'])/preceding-sibling::a)/parent::div)/parent::th)/following-sibling::td[3]")).getText();

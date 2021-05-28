@@ -47,7 +47,7 @@ public class reusablemethods extends Base {
 	public WebDriver generatedoc(WebDriver driver) throws InterruptedException {
 		
 		 int k= driver.findElements(By.xpath("//iframe")).size();
-		 System.out.println(k);
+		 //System.out.println(k);
 		 for(int b=0; b<k; b++){
 		 	driver.switchTo().frame(b);
 		 	//WebElement con =driver.findElement(By.xpath("//*[contains(text(),'Continue')]"));

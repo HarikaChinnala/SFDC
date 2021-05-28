@@ -35,6 +35,7 @@ public class contractSubmitForSignature extends Base {
 	{
 		
 		driver= initialiseDriver();
+		createContract cc=new createContract();
 		landingPage lp= new landingPage(driver);
 		contractPage c= new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -42,27 +43,42 @@ public class contractSubmitForSignature extends Base {
 		Thread.sleep(15000);
 		js.executeScript("window.scrollBy(0,2700)", "");
 		Actions act = new Actions(driver);
-		//Thread.sleep(15000);
 		WebElement ele = driver.findElement(By.xpath("((//*[text() = 'Billing Contact'])//parent::div)//following-sibling::div/span[@class='test-id__field-value slds-form-element__static slds-grow ']"));
 		act.doubleClick(ele).perform();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
+		
+/*		 WebElement bc=driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input"));
+       String bcvalue= bc.getAttribute("placeholder");
+       if(bcvalue.equals("Search Contacts...")){
+        bc.sendKeys(primarycontact);
+      
+       
+        Thread.sleep(5000);
+        
+        driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/div/div[@class='listContent']/ul/li/a/div[@class='slds-m-left--smalllabels slds-truncate slds-media__body']/div[@title='"
+				+ primarycontact
+				+ "']")).click();
+       }
+	*/	 
 		driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input")).sendKeys(primarycontact);
 		Thread.sleep(5000);
 		//String primarycontact = prop.getProperty("primarycontact");
 		driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/div/div[@class='listContent']/ul/li/a/div[@class='slds-m-left--smalllabels slds-truncate slds-media__body']/div[@title='"
 				+ primarycontact
 				+ "']")).click();
+
+	
 		driver.findElement(By.xpath("//*[text() = 'Save']")).click();
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		c.Dropdown().click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		js.executeScript("arguments[0].click();", c.SubmitForSignature());
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		//driver.findElement(By.xpath("(//*[@class='select'])[1]")).click()0		
 		driver.findElement(By.xpath("//div[@id='parent_Signature_Tool__c2']/div/div")).click();
 		driver.findElement(By.xpath("//*[@title='Neustar Adobe Signature']")).click();

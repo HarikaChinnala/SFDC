@@ -31,6 +31,7 @@ import Pageobjects.loginPageObject;
 import Regression.Base;
 
 public class createAmendmentOpportunity extends Base {
+	//public String amendurl;
 	@Test
 	public void createAmendmentOpportunity() throws IOException, InterruptedException {
 		
@@ -238,7 +239,7 @@ public class createAmendmentOpportunity extends Base {
 			System.out.println("Quote is approved");
 		} else
 			System.out.println("Quote is not approved");
-		// driver.close();
+		
 		
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[contains(text(),'Amendment for contract #"
 				+ contractid
@@ -246,8 +247,51 @@ public class createAmendmentOpportunity extends Base {
 		Thread.sleep(5000);
 		//to be sent to data.prop file
 		
-		String amendurl=driver.getCurrentUrl();
-		System.out.println(driver.getCurrentUrl());
+		String aurl=driver.getCurrentUrl();
+		System.out.println("Amendment Opportunity url:"+aurl);
+
+//		driver.get(amendurl);
+		Thread.sleep(15000);
+	 	//opportunity type	
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+		((JavascriptExecutor)driver).executeScript("scroll(0,500);");
+	 		a.doubleClick(driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div"))).build().perform();;
+		Thread.sleep(10000);
+		//js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div")));
+		WebElement opp=driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div[1]/lightning-base-combobox/div/div[1]/input"));
+//		js.executeScript("arguments[0].scrollTo();",opp);
+		//opp.click();
+		js.executeScript("arguments[0].click();", opp);
+		Thread.sleep(2000);
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[@data-value='Upgrade']")));	
+		Thread.sleep(1000);
 		
+		//product/usecase
+		//js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Product / Use Case')]//parent::label)/following-sibling::div")));
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("(//*[contains(text(),'Product / Use Case')]//parent::label)/following-sibling::div[1]/lightning-base-combobox/div/div[1]/input")));
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Product / Use Case')]//parent::label)/following-sibling::div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[@data-value='DNS']")));
+		Thread.sleep(1000);
+		
+	 		//service date
+		//js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Service Order Date')]//parent::label)/following-sibling::div")));
+		WebElement serv=driver.findElement(By.xpath("(//*[contains(text(),'Service Order Date')]//parent::label)/following-sibling::div/input"));
+//		js.executeScript("arguments[0].scrollIntoView();",serv);
+		js.executeScript("arguments[0].click();", serv);
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//button[@name='today']")));
+		Thread.sleep(5000);
+		
+	 		//foundbychannel
+		WebElement foundbychannel= driver.findElement(By.xpath("(//*[contains(text(),'Found by Channel?')]//parent::label)/following-sibling::div[1]/lightning-base-combobox/div/div[1]/input"));
+//		js.executeScript("arguments[0].scrollIntoView();",foundbychannel);
+		if(foundbychannel.isEnabled()){
+		//js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Found by Channel?')]//parent::label)/following-sibling::div")));
+			js.executeScript("arguments[0].click();",foundbychannel);
+			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Found by Channel?')]//parent::label)/following-sibling::div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[@data-value='No']")));		
+		}Thread.sleep(5000);
+		
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='SaveEdit']")));
+		Thread.sleep(5000);
+		
+		driver.close();
 	}
 }

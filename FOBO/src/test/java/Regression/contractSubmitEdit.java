@@ -36,6 +36,7 @@ public class contractSubmitEdit extends Base {
 		
 		driver= initialiseDriver();
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		createContract cc=new createContract();
 		contractPage c= new contractPage(driver);
 		driver.get(contracturl);
 		

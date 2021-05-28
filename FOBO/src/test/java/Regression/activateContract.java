@@ -36,6 +36,7 @@ public class activateContract extends Base {
 		landingPage lp= new landingPage(driver);
 		contractPage cp= new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		createContract cc=new createContract();
 		js.executeScript("arguments[0].click();", lp.getcontracts());
 		Thread.sleep(5000);
 		lp.getcontracttxtbox().sendKeys(contractid);
@@ -118,7 +119,7 @@ public class activateContract extends Base {
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", cp.getActivatepopup());
 		Thread.sleep(5000);
-		driver.navigate().refresh();
+		//driver.navigate().refresh();
 		Thread.sleep(10000);
 		
 		String act=cp.getActchev().getAttribute("aria-selected");

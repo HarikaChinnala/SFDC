@@ -1,6 +1,7 @@
 package Regression;
 
 import java.awt.List;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,7 +31,7 @@ import Pageobjects.reusablemethods;
 import Regression.Base;
 
 public class createQuoteandConfigure extends Base {
-	
+	//public String existquote;
 	
 	@Test(priority=1)
 	public void createQuote() throws IOException, InterruptedException
@@ -81,8 +82,8 @@ public class createQuoteandConfigure extends Base {
 		js.executeScript("arguments[0].click();", op.getquotelink());
 		Thread.sleep(30000);
 		//to be sent to data.property file
-		String existquote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
-		System.out.println(existquote);
+		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
+		System.out.println("Quote created is:"+quote);
 		
 	/*	 try (final OutputStream outputstream 
 	                = new FileOutputStream("data.properties");) {
@@ -166,6 +167,7 @@ public class createQuoteandConfigure extends Base {
 		createQuotePage qp= new createQuotePage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		reusablemethods rm= new reusablemethods(driver);
+		Thread.sleep(5000);
         js.executeScript("arguments[0].click();", qp.getGenquoteprop());
         Thread.sleep(60000);
         rm.generatedoc(driver);
