@@ -77,6 +77,11 @@ public class createContract extends Base {
 			
 	        Thread.sleep(5000);
 	        driver.navigate().refresh();
+	        
+	        // to be sent to data.prop file
+	        String contracturl = driver.getCurrentUrl();
+	        String contractid= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
+	        System.out.println(contractid);
 	        Thread.sleep(5000);
 		
 		

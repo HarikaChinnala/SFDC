@@ -2,7 +2,9 @@ package Regression;
 
 import java.awt.List;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -78,7 +80,17 @@ public class createQuoteandConfigure extends Base {
 		//driver.findElement(By.xpath("(//*[contains(text(),'Primary Quote')]/parent::div)/following-sibling::div[1]/span/slot/slot/force-lookup/div/force-hoverable-link/div/a/span[@id='window']")).click();
 		js.executeScript("arguments[0].click();", op.getquotelink());
 		Thread.sleep(30000);
+		//to be sent to data.property file
+		String existquote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
+		System.out.println(existquote);
 		
+	/*	 try (final OutputStream outputstream 
+	                = new FileOutputStream("data.properties");) {
+			 Properties prop = new Properties();
+			 prop.setProperty("existquote",existquote);
+			 
+		 }*/
+	    
 		
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);

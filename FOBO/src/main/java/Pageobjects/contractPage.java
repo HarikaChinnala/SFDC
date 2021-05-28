@@ -84,6 +84,75 @@ public WebElement agreementstatus;
 
 @FindBy(xpath="//*[@class='esign-top-object-lookup-section slds-form-element slds-grid']/div[3]")
 public WebElement contractlink;
+
+@FindBy(xpath="//*[@data-name='Draft']")
+public WebElement Chevron_Draft;
+
+//@FindBy(xpath="//*[@title = 'Show 22 more actions']/*[@role='button']")
+//@FindBy(xpath="//*[@title = 'Show 22 more actions']")
+@FindBy(xpath="//*[@class='uiMenu']/div/div/div/a[@class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']")
+public WebElement Dropdown;
+
+@FindBy(xpath="//*[@title = 'Submit Edit'] //*[@role='button']")
+public WebElement SubmitEdit;
+
+@FindBy(xpath="//*[@class='slds-form-element']/div/textarea")
+public WebElement SubmitEditDetails;
+
+@FindBy(xpath="//*[@class='slds-card__footer']/button[@type='submit']")
+public WebElement Submit_SubmitEdit;
+
+@FindBy(xpath="//*[@data-name='Edit Under Review']")
+public WebElement Chevron_EditUnderReview;
+
+@FindBy(xpath="(//*[text()='Status'])[2]/parent :: div/following-sibling::div/span")
+public WebElement Details_Status;
+
+@FindBy(xpath="//*[@title='Status']/following-sibling::div")
+public WebElement Contract_Status;
+
+@FindBy(xpath="//span[text()='Related']")
+public WebElement Related_Tab;
+
+@FindBy(xpath="//*[text()='Cases']")//*[@title='Cases']//parent::a
+public WebElement Cases_Section;
+
+
+//@FindBy(xpath="//table[@role='grid']/tbody/tr/th/span/a")
+@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request -- Security')]/parent::span/parent::td/preceding-sibling::th/span/a")
+public WebElement Case_SubmitEdit;
+
+@FindBy(xpath="(((//*[text() = 'Case Owner'])//parent::div)//following-sibling::div)/span/slot/slot/force-owner-lookup/div/span")
+public WebElement Case_Owner;
+
+@FindBy(xpath="//*[text()='Approvals']")
+public WebElement Approvals_Section;
+
+@FindBy(xpath="(((//*[@class='slds-truncate'][contains(text(),'Requested')])/parent::span)/parent::td)/preceding-sibling::th/span/a")
+public WebElement Approvals_Requested;
+
+@FindBy(xpath="//*[@type='button'][text()='Approve']")
+public WebElement Approve_Button;
+
+@FindBy(xpath="//*[@class='slds-textarea']")
+public WebElement Approve_Text;
+
+@FindBy(xpath="//*[@class='slds-button slds-button--brand']")
+public WebElement Approval_Submit;
+
+@FindBy(xpath="//*[@data-name='Edit Complete']")
+public WebElement Chevron_EditComplete;
+
+@FindBy(xpath="//*[@title = 'Submit For Signature'] //*[@role='button']")
+public WebElement SubmitForSignature;
+
+@FindBy(xpath="//*[@data-name='Submission Under Review']")
+public WebElement Chevron_SubmissionUnderReview;
+
+@FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission -- Security')]/parent::span/parent::td/preceding-sibling::th/span/a")
+public WebElement Case_SubmitForSignature;
+
+
 public contractPage(WebDriver driver) {
 	// TODO Auto-generated constructor stub
 	//this.driver=driver;
@@ -188,4 +257,90 @@ public WebElement getFiles(){
 	public WebElement geteditsave(){
 		return editsave;
 }
+
+	public WebElement Chevron_Draft(){
+		return Chevron_Draft;
+	}
+	
+	public WebElement Dropdown(){
+		return Dropdown;
+	}
+	
+	public WebElement SubmitEdit(){
+		return SubmitEdit;
+	}
+	
+	public WebElement SubmitEditDetails(){
+		return SubmitEditDetails;
+	}
+	
+	public WebElement Submit_SubmitEdit(){
+		return Submit_SubmitEdit;
+	}
+	
+	public WebElement Chevron_EditUnderReview(){
+		return Chevron_EditUnderReview;
+	}
+	
+	public WebElement Details_Status(){
+		return Details_Status;
+	}
+	
+	public WebElement Contract_Status(){
+		return Contract_Status;
+	}
+	
+	public WebElement Related_Tab(){
+		return Related_Tab;
+	}
+	
+	public WebElement Cases_Section(){
+		return Cases_Section;
+	}
+	
+	public WebElement Case_SubmitEdit(){
+		return Case_SubmitEdit;
+	}
+	
+	public WebElement Case_Owner(){
+		return Case_Owner;
+	}
+	
+	public WebElement Approvals_Section(){
+		return Approvals_Section;
+	}
+	
+	public WebElement Approvals_Requested(){
+		return Approvals_Requested;
+	}
+	
+	public WebElement Approve_Button(){
+		return Approve_Button;
+	}
+	
+	public WebElement Approve_Text(){
+		return Approve_Text;
+	}
+	
+	public WebElement Approval_Submit(){
+		return Approval_Submit;
+	}
+	
+	public WebElement Chevron_EditComplete(){
+		return Chevron_EditComplete;
+	}
+	
+	public WebElement SubmitForSignature(){
+		return SubmitForSignature;
+	}
+	
+	public WebElement Chevron_SubmissionUnderReview(){
+		return Chevron_SubmissionUnderReview;
+	}
+	
+	public WebElement Case_SubmitForSignature(){
+		return Case_SubmitForSignature;
+	}
+
+	
 }

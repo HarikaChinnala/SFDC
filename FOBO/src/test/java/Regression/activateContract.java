@@ -66,7 +66,7 @@ public class activateContract extends Base {
 		catch (Exception e){
 		js.executeScript("arguments[0].click();", cp.geteditsave());
 		}
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		driver.navigate().refresh();
 		Thread.sleep(10000);
 		

@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Regression.amendContract">
+      <class name="Regression.activateContract">
         <methods>
-          <include name="amendContract"/>
+          <include name="awaitingactivation"/>
+          <include name="attentionrequired"/>
         </methods>
-      </class> <!-- Regression.amendContract -->
+      </class> <!-- Regression.activateContract -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

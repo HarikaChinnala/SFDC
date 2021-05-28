@@ -45,6 +45,29 @@ public class eSignature extends Base {
 	{
 		
 		driver= initialiseDriver();
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));
+		Thread.sleep(5000);
+		js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.profile-link-label.logout.uiOutputURL")));
+		Thread.sleep(10000);
+		//login as admin
+		
+		loginPageObject l = new loginPageObject(driver);
+		l.getusername().sendKeys(usernameadmin);
+		l.getpassword().sendKeys(pwd);
+		l.getLogin().click();
+		try {
+			l.clickskip().click();
+			}
+			catch(Exception e) {
+			 // driver.navigate().refresh();
+			}
+		Thread.sleep(3000);
+		try {
+			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
+		}
+			catch(Exception e) { 
+		}
 		//rm.otherUserlogin(driver);
 		// other user login
 		/*	driver.findElement(By.xpath("//*[@class='setupGear']")).click();
@@ -73,7 +96,7 @@ public class eSignature extends Base {
 	    Thread.sleep(10000);
 	    }
 		driver.findElement(By.xpath("//*[@title='User Detail']")).click();
-		JavascriptExecutor js = (JavascriptExecutor)driver;
+		
 		Thread.sleep(10000);
 		int j=driver.findElements(By.xpath("//iframe")).size();
 		System.out.println(j);

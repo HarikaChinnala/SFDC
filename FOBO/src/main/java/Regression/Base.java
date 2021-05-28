@@ -2,7 +2,9 @@ package Regression;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +28,7 @@ public class Base {
 	public WebDriver driver;
 	
 	protected String userid;
+	protected String userid1;
 	protected String contracturl;
 	protected String contractid;
 	protected String ARcomments;
@@ -63,6 +66,12 @@ public class Base {
 	protected String RNperiod;
 	protected String OppName;
 	protected String amendurl;
+	protected String ApprovalComments;
+	protected String SubmitEditDetails;
+	protected String usernameadmin;
+	protected String pwd;
+
+	//private Properties configProp;
 	
 	public WebDriver initialiseDriver() throws IOException, InterruptedException
 	{
@@ -112,6 +121,7 @@ public class Base {
 		}
 		Thread.sleep(2000);
 		userid=prop.getProperty("userid");
+		userid1=prop.getProperty("userid1");
 		contracturl=prop.getProperty("contracturl");
 		contractid=prop.getProperty("contractid");
 		ARcomments=prop.getProperty("ARcomments");
@@ -149,13 +159,27 @@ public class Base {
 		RNperiod=prop.getProperty("RNperiod");
 		OppName=prop.getProperty("OppName");
 		amendurl=prop.getProperty("amendurl");
+		ApprovalComments=prop.getProperty("ApprovalComments");
+		SubmitEditDetails=prop.getProperty("SubmitEditDetails");
+		usernameadmin=prop.getProperty("usernameadmin");
+		pwd=prop.getProperty("pwd");
 		return driver;
 		
 	}
-	
+	/*public void setProperty(String key, String value){
+		  prop.setProperty(key, value);
+		}
+		 
+		public void flush() throws FileNotFoundException, IOException {
+		    try (final OutputStream outputstream 
+		                = new FileOutputStream("data.properties");) {
+		        prop.store(outputstream,"File Updated");
+		        outputstream.close();
+		    }*/
+		}
 	
 	
 	
 
-}
+
 
