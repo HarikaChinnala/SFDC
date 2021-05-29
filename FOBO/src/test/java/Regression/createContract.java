@@ -2,7 +2,9 @@ package Regression;
 
 import java.awt.List;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -41,13 +43,13 @@ public class createContract extends Base {
 		//driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005DmXAAU/view");
 		js.executeScript("arguments[0].click();", lp.getOpportunities());
 		Thread.sleep(5000);
-		lp.getopptxtbox().sendKeys(OppName);
+		lp.getopptxtbox().sendKeys(opportunityname);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
 		//String OppName = prop.getProperty("OppName");
 		driver.findElement(By.xpath("//*[@title='"
-								+ OppName
+								+ opportunityname
 								+ "']")).click();
 		oppPage op= new oppPage(driver);
 		
@@ -78,6 +80,8 @@ public class createContract extends Base {
 			
 	        Thread.sleep(5000);
 	        driver.navigate().refresh();
+	        
+	        Thread.sleep(10000);
 	        String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
 	        System.out.println("Contract Status is:"+stat);
 	        // to be sent to data.prop file
@@ -85,7 +89,13 @@ public class createContract extends Base {
 	       String  id= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
 	        System.out.println("Contractid is:"+id);
 	        System.out.println("Contracturl"+curl);
-	        
+	        prop.setProperty("contractid", id);
+	        prop.setProperty("contracturl", curl);
+			try (final OutputStream outputstream = new FileOutputStream(
+					"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+				prop.store(outputstream, "File Updated");
+				outputstream.close();
+			}
 	        Thread.sleep(5000);
 		
 		

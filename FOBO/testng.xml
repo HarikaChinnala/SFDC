@@ -3,9 +3,9 @@
 <suite name="Suite" preserve-order="true" thread-count="10">
   <test name="Test">
     <classes>
-    <!--    <class name="Regression.createAccountandEdit"/>
+  <!--  <class name="Regression.createAccountandEdit"/>
       <class name="Regression.createContactandEdit"/>
-      <class name="Regression.createLead"/> -->
+      <class name="Regression.createLead"/>  -->
       <class name="Regression.createOpportunity"/>
       <class name="Regression.createQuoteandConfigure"/>
       <class name="Regression.createContract"/>
@@ -16,7 +16,7 @@
       <class name="Regression.createAmendmentOpportunity"/>
       <class name="Regression.amendmentSubmitEdit"/>
       <class name="Regression.eSignatureAmendment"/>
-      <class name="Regression.amendmentSubmitForSignature.java"/>
+      <class name="Regression.amendmentSubmitForSignature"/>
       <class name="Regression.amendContract"/>
       
     </classes>

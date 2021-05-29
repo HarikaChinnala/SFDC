@@ -47,7 +47,7 @@ public class amendmentSubmitEdit extends Base {
 
         driver = initialiseDriver();
         contractPage c = new contractPage(driver);
-        driver.get(amendurl);
+       driver.get(amendurl);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Thread.sleep(20000);
 

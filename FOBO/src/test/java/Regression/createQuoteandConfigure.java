@@ -32,11 +32,12 @@ import Regression.Base;
 
 public class createQuoteandConfigure extends Base {
 	//public String existquote;
+	//createOpportunity cp=new createOpportunity();
 	
 	@Test(priority=1)
 	public void createQuote() throws IOException, InterruptedException
 	{
-		driver= initialiseDriver();	
+		driver= initialiseDriver();
 		landingPage lp= new landingPage(driver);
 		createQuotePage qp= new createQuotePage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -49,13 +50,13 @@ public class createQuoteandConfigure extends Base {
 		}
 		//lp.getOpportunities().click();
 		Thread.sleep(5000);
-		lp.getopptxtbox().sendKeys(OppName);
+		lp.getopptxtbox().sendKeys(opportunityname);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
 		//String OppName = prop.getProperty("OppName");
 		driver.findElement(By.xpath("//*[@title='"
-								+ OppName
+								+ opportunityname
 								+ "']")).click();
 		Thread.sleep(10000);
 		js.executeScript("arguments[0].click();", lp.getnewQuote()); 
@@ -84,6 +85,12 @@ public class createQuoteandConfigure extends Base {
 		//to be sent to data.property file
 		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
 		System.out.println("Quote created is:"+quote);
+		prop.setProperty("existquote", quote);
+		try (final OutputStream outputstream = new FileOutputStream(
+				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+			prop.store(outputstream, "File Updated");
+			outputstream.close();
+		}
 		
 	/*	 try (final OutputStream outputstream 
 	                = new FileOutputStream("data.properties");) {
@@ -204,7 +211,7 @@ public class createQuoteandConfigure extends Base {
         }
         else 
         	System.out.println("Quote is not approved");
-        driver.close();
+      driver.close();
         }
 	
 }

@@ -3,43 +3,21 @@
 <suite thread-count="10" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="Regression.contractSubmitForSignature">
+      <class name="Regression.createOpportunity">
         <methods>
-          <include name="contractSubmitForSignature"/>
+          <include name="afterclassmethod"/>
+          <include name="initialiseDriver"/>
+          <include name="createOpportunity"/>
         </methods>
-      </class> <!-- Regression.contractSubmitForSignature -->
-      <class name="Regression.createAmendmentOpportunity">
+      </class> <!-- Regression.createOpportunity -->
+      <class name="Regression.createQuoteandConfigure">
         <methods>
-          <include name="createAmendmentOpportunity"/>
+          <include name="generatequoteproposal"/>
+          <include name="configureQuote"/>
+          <include name="createQuote"/>
+          <include name="approveQuote"/>
         </methods>
-      </class> <!-- Regression.createAmendmentOpportunity -->
-      <class name="Regression.activateContract">
-        <methods>
-          <include name="awaitingactivation"/>
-          <include name="contractactivation"/>
-          <include name="attentionrequired"/>
-        </methods>
-      </class> <!-- Regression.activateContract -->
-      <class name="Regression.contractSubmitEdit">
-        <methods>
-          <include name="Submitedit"/>
-        </methods>
-      </class> <!-- Regression.contractSubmitEdit -->
-      <class name="Regression.eSignature">
-        <methods>
-          <include name="eSignature"/>
-        </methods>
-      </class> <!-- Regression.eSignature -->
-      <class name="Regression.amendContract">
-        <methods>
-          <include name="amendContract"/>
-        </methods>
-      </class> <!-- Regression.amendContract -->
-      <class name="Regression.eSignatureAmendment">
-        <methods>
-          <include name="eSignatureAmendment"/>
-        </methods>
-      </class> <!-- Regression.eSignatureAmendment -->
+      </class> <!-- Regression.createQuoteandConfigure -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

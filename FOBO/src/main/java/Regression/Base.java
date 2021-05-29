@@ -17,6 +17,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import Pageobjects.loginPageObject;
@@ -64,18 +68,19 @@ public class Base {
 	protected String foundbychannel;
 	protected String existquote;
 	protected String RNperiod;
-	protected String OppName;
+//	protected String OppName;
 	protected String amendurl;
 	protected String ApprovalComments;
 	protected String SubmitEditDetails;
 	protected String usernameadmin;
 	protected String pwd;
 
-	//private Properties configProp;
+	public	Properties prop = new Properties();
+	
 	
 	public WebDriver initialiseDriver() throws IOException, InterruptedException
 	{
-		Properties prop = new Properties();
+	
 		FileInputStream fis = new FileInputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
 		prop.load(fis);
 		
@@ -100,7 +105,7 @@ public class Base {
     		//exceute in IE
     	}
     
-    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     	driver.manage().window().maximize();
     	driver.get(prop.getProperty("url"));
 		loginPageObject l = new loginPageObject(driver);
@@ -157,25 +162,34 @@ public class Base {
 		foundbychannel=prop.getProperty("foundbychannel");
 		existquote=prop.getProperty("existquote");
 		RNperiod=prop.getProperty("RNperiod");
-		OppName=prop.getProperty("OppName");
+//		OppName=prop.getProperty("OppName");
 		amendurl=prop.getProperty("amendurl");
 		ApprovalComments=prop.getProperty("ApprovalComments");
 		SubmitEditDetails=prop.getProperty("SubmitEditDetails");
 		usernameadmin=prop.getProperty("usernameadmin");
 		pwd=prop.getProperty("pwd");
-		return driver;
 		
+		
+		//FileOutputStream fout = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
+		
+		return driver;
 	}
-	/*public void setProperty(String key, String value){
-		  prop.setProperty(key, value);
-		}
-		 
-		public void flush() throws FileNotFoundException, IOException {
-		    try (final OutputStream outputstream 
-		                = new FileOutputStream("data.properties");) {
-		        prop.store(outputstream,"File Updated");
-		        outputstream.close();
-		    }*/
+
+@AfterClass
+public void afterclassmethod(){
+	
+	
+}
+
+
+@AfterSuite
+public void aftersuitemethod(){
+	driver.quit();
+}
+
+
+
+	
 		}
 	
 	

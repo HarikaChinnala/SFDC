@@ -42,32 +42,17 @@ public class contractSubmitForSignature extends Base {
 		driver.get(contracturl);
 		Thread.sleep(15000);
 		js.executeScript("window.scrollBy(0,2700)", "");
+		Thread.sleep(3000);
 		Actions act = new Actions(driver);
 		WebElement ele = driver.findElement(By.xpath("((//*[text() = 'Billing Contact'])//parent::div)//following-sibling::div/span[@class='test-id__field-value slds-form-element__static slds-grow ']"));
 		act.doubleClick(ele).perform();
 		Thread.sleep(5000);
-		
-/*		 WebElement bc=driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input"));
-       String bcvalue= bc.getAttribute("placeholder");
-       if(bcvalue.equals("Search Contacts...")){
-        bc.sendKeys(primarycontact);
-      
-       
-        Thread.sleep(5000);
-        
-        driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/div/div[@class='listContent']/ul/li/a/div[@class='slds-m-left--smalllabels slds-truncate slds-media__body']/div[@title='"
-				+ primarycontact
-				+ "']")).click();
-       }
-	*/	 
-		driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input")).sendKeys(primarycontact);
+		driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input")).sendKeys(prop.getProperty("primarycontact"));
 		Thread.sleep(5000);
-		//String primarycontact = prop.getProperty("primarycontact");
+		String primarycontact = prop.getProperty("primarycontact");
 		driver.findElement(By.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/div/div[@class='listContent']/ul/li/a/div[@class='slds-m-left--smalllabels slds-truncate slds-media__body']/div[@title='"
 				+ primarycontact
 				+ "']")).click();
-
-	
 		driver.findElement(By.xpath("//*[text() = 'Save']")).click();
 		Thread.sleep(15000);
 		driver.navigate().refresh();

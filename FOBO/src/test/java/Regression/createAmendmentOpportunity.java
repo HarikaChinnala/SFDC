@@ -1,8 +1,10 @@
 package Regression;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -247,8 +249,16 @@ public class createAmendmentOpportunity extends Base {
 		Thread.sleep(5000);
 		//to be sent to data.prop file
 		
-		String aurl=driver.getCurrentUrl();
-		System.out.println("Amendment Opportunity url:"+aurl);
+		String amendurl=driver.getCurrentUrl();
+		System.out.println("Amendment Opportunity url:"+amendurl);
+		prop.setProperty("amendurl", amendurl);
+		try (final OutputStream outputstream = new FileOutputStream(
+				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+			prop.store(outputstream, "File Updated");
+			outputstream.close();
+		}
+		
+		
 
 //		driver.get(amendurl);
 		Thread.sleep(15000);

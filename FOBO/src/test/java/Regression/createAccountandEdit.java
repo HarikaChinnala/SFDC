@@ -62,6 +62,7 @@ public class createAccountandEdit extends Base {
 			ap.getedit().click();
 			ap.getwebsite().clear();
 			ap.getwebsite().sendKeys(websitename);
+			Thread.sleep(3000);
 			ap.getsaveAccount().click();
 			//driver.findElement(By.xpath("(//*[text()='Save'])[2]")).click();
 			Thread.sleep(5000);
