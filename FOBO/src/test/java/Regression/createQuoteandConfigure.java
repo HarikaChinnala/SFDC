@@ -70,11 +70,14 @@ public class createQuoteandConfigure extends Base {
 				+ "']")).click();
 		
 		qp.getsave().click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
+		driver.navigate().refresh();
+		Thread.sleep(10000);
 	}
 		@Test(priority=2)
 		public void configureQuote() throws IOException, InterruptedException
 		{
+			
 			oppPage op= new oppPage(driver);
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", op.getDetail());
@@ -87,7 +90,7 @@ public class createQuoteandConfigure extends Base {
 		System.out.println("Quote created is:"+quote);
 		prop.setProperty("existquote", quote);
 		try (final OutputStream outputstream = new FileOutputStream(
-				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+				"C:\\Users\\1753793\\eclipse-workspace\\SFDC\\FOBO\\src\\main\\java\\Regression\\data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}
@@ -180,6 +183,11 @@ public class createQuoteandConfigure extends Base {
         rm.generatedoc(driver);
         js.executeScript("arguments[0].click();", qp.getRelated()); 
         Thread.sleep(10000);
+        
+        Actions a = new Actions(driver);
+        a.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+		Thread.sleep(10000);
+        
         String file=qp.getFiles().getAttribute("title");
         if(file.startsWith("Quote Proposal -"))
         System.out.println("File is attached");
