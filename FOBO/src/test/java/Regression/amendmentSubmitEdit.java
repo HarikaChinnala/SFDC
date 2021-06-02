@@ -102,6 +102,7 @@ public class amendmentSubmitEdit extends Base {
             Assert.assertEquals("Sales Operations", c.Case_Owner().getText());
             driver.navigate().back();
         } catch (Exception e) {
+        	
             System.out.println("No Case Records");
             Assert.assertFalse(true);
         }
@@ -137,12 +138,14 @@ public class amendmentSubmitEdit extends Base {
         try {
             l.clickskip().click();
         } catch (Exception e) {
+        	Thread.sleep(1000);
             // driver.navigate().refresh();
         }
         Thread.sleep(3000);
         try {
             driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
         } catch (Exception e) {
+        	Thread.sleep(1000);
         }
         // contractPage c= new contractPage(driver);
         driver.get(amendurl);
@@ -198,6 +201,7 @@ public class amendmentSubmitEdit extends Base {
  
 
                     catch (Exception e) {
+                    	
                         driver.switchTo().defaultContent();
                     }
                     driver.switchTo().defaultContent();
@@ -221,6 +225,7 @@ public class amendmentSubmitEdit extends Base {
  
 
         } catch (Exception e) {
+        	
             System.out.println("No Approval Records");
             Assert.assertFalse(true);
 
@@ -257,6 +262,7 @@ public class amendmentSubmitEdit extends Base {
                 //System.out.println("clicked login");
                 Thread.sleep(5000);
             } catch (Exception e) {
+            	
                 driver.switchTo().defaultContent();
             }
 

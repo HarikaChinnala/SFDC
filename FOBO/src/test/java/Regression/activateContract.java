@@ -65,6 +65,7 @@ public class activateContract extends Base {
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[@dir='ltr'][contains(text(),'Save')])[2]")));	
 		}
 		catch (Exception e){
+			
 		js.executeScript("arguments[0].click();", cp.geteditsave());
 		}
 		Thread.sleep(10000);

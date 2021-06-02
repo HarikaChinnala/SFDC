@@ -125,6 +125,7 @@ public class contractSubmitEdit extends Base {
 			driver.navigate().back();
 		}
 		catch(Exception e){
+			
 			System.out.println("No Case Records");
 			Assert.assertFalse(true);
 		}
@@ -147,13 +148,15 @@ public class contractSubmitEdit extends Base {
 					l.clickskip().click();
 					}
 					catch(Exception e) {
+						Thread.sleep(1000);
 					 // driver.navigate().refresh();
 					}
 				Thread.sleep(3000);
 				try {
 					driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
 				}
-					catch(Exception e) { 
+					catch(Exception e) {
+						Thread.sleep(1000);
 				}
 				//contractPage c= new contractPage(driver);
 				driver.get(contracturl);
@@ -187,6 +190,7 @@ public class contractSubmitEdit extends Base {
 				            }
 				           
 				            catch (Exception e) {
+				            	
 				                driver.switchTo().defaultContent();
 				            }
 				            driver.switchTo().defaultContent();
@@ -202,6 +206,7 @@ public class contractSubmitEdit extends Base {
 					
 				}
 				catch(Exception e){
+					
 					System.out.println("No Approval Records");
 					Assert.assertFalse(true);
 					
@@ -228,21 +233,22 @@ public class contractSubmitEdit extends Base {
 				//JavascriptExecutor js = (JavascriptExecutor)driver;
 				Thread.sleep(10000);
 				int j=driver.findElements(By.xpath("//iframe")).size();
-				System.out.println(j);
+			//	System.out.println(j);
 			    for(int a=0; a<j; a++){
 			    	driver.switchTo().frame(a);
 				try{	
 			    		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@id='topButtonRow']/input[4][@name='login']")));
-			    		System.out.println("clicked login");
+			    	//	System.out.println("clicked login");
 			    		Thread.sleep(5000);
 			    		}
 			    	catch (Exception e){
+			    		
 			    		driver.switchTo().defaultContent();
 			    	}
 			    	
 			    }
 				driver.switchTo().defaultContent();
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 				//contracturl=prop.getProperty("contracturl");
 				driver.get(contracturl);
 		

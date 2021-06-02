@@ -5,19 +5,67 @@
     <classes>
       <class name="Regression.createOpportunity">
         <methods>
+          <include name="aftersuitemethod"/>
           <include name="afterclassmethod"/>
-          <include name="initialiseDriver"/>
-          <include name="createOpportunity"/>
         </methods>
       </class> <!-- Regression.createOpportunity -->
+      <class name="Regression.amendmentSubmitForSignature">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.amendmentSubmitForSignature -->
       <class name="Regression.createQuoteandConfigure">
         <methods>
-          <include name="generatequoteproposal"/>
-          <include name="configureQuote"/>
-          <include name="createQuote"/>
-          <include name="approveQuote"/>
+          <include name="afterclassmethod"/>
         </methods>
       </class> <!-- Regression.createQuoteandConfigure -->
+      <class name="Regression.contractSubmitEdit">
+        <methods>
+          <include name="Submitedit"/>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.contractSubmitEdit -->
+      <class name="Regression.activateContract">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.activateContract -->
+      <class name="Regression.contractSubmitForSignature">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.contractSubmitForSignature -->
+      <class name="Regression.createContract">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.createContract -->
+      <class name="Regression.eSignature">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.eSignature -->
+      <class name="Regression.amendmentSubmitEdit">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.amendmentSubmitEdit -->
+      <class name="Regression.eSignatureAmendment">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.eSignatureAmendment -->
+      <class name="Regression.amendContract">
+        <methods>
+          <include name="amendContract"/>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.amendContract -->
+      <class name="Regression.createAmendmentOpportunity">
+        <methods>
+          <include name="afterclassmethod"/>
+        </methods>
+      </class> <!-- Regression.createAmendmentOpportunity -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -57,6 +57,7 @@ public class eSignatureAmendment extends Base {
 			l.clickskip().click();
 			}
 			catch(Exception e) {
+				Thread.sleep(1000);
 			 // driver.navigate().refresh();
 			}
 		Thread.sleep(3000);
@@ -64,6 +65,7 @@ public class eSignatureAmendment extends Base {
 			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
 		}
 			catch(Exception e) { 
+				Thread.sleep(1000);
 		}
 		 String URL= driver.getCurrentUrl();
 		    //System.out.println(URL);
@@ -91,6 +93,7 @@ public class eSignatureAmendment extends Base {
 		    		Thread.sleep(5000);
 		    		}
 		    	catch (Exception e){
+		    		
 		    		driver.switchTo().defaultContent();
 		    	}
 		    	
@@ -204,6 +207,7 @@ public class eSignatureAmendment extends Base {
 						System.out.println(agreementstatus);		
 	       }		
 	       catch (Exception exc){
+	    	   Thread.sleep(1000);
 	       }
 	       js.executeScript("arguments[0].click();", op.getDetail());
 	       Thread.sleep(5000);
@@ -234,6 +238,7 @@ public class eSignatureAmendment extends Base {
 							System.out.println(agreementstatus);		
 		       }		
 		       catch (Exception exc){
+		    	   Thread.sleep(1000);
 		       }
 			        
 			       

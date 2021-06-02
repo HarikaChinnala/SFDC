@@ -48,8 +48,17 @@ public class amendContract extends Base {
 			System.out.println(amendstatus);
 			Thread.sleep(5000);
 		Actions action= new Actions(driver);
+		
+		//action.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+	//	Thread.sleep(10000);
+		//((JavascriptExecutor)driver).executeScript("scroll(0,4000);");
+		action.moveToElement(op.getAmendcontractstatus()).build().perform();
 		action.doubleClick(op.getAmendcontractstatus()).build().perform();
-		((JavascriptExecutor)driver).executeScript("scroll(0,4000);");
+	//	js.executeScript("window.scrollBy(0,50)", "");
+		Thread.sleep(5000);
+		action.moveToElement(driver.findElement(By.xpath("//*[contains(text(),'Amendment Contract Status')]//parent::lightning-combobox/div"))).build().perform();
+		Thread.sleep(2000);
+		js.executeScript("window.scrollBy(0,70)", "");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[contains(text(),'Amendment Contract Status')]//parent::lightning-combobox/div")).click();
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Amendment Contract Status')]//parent::lightning-combobox/div/lightning-base-combobox/div/div)/following-sibling::div/lightning-base-combobox-item[@data-value='Activated']")));
@@ -95,7 +104,7 @@ public class amendContract extends Base {
 		  {
 			  System.out.println("contract is not amended"); 
 		  }
-		  driver.close();
+//		  driver.close();
 		
 	}
 }

@@ -12,10 +12,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -74,6 +76,7 @@ public class Base {
 	protected String SubmitEditDetails;
 	protected String usernameadmin;
 	protected String pwd;
+	protected String username;
 
 	public	Properties prop = new Properties();
 	
@@ -105,7 +108,8 @@ public class Base {
     		//exceute in IE
     	}
     
-    	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+ //   	driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
     	driver.manage().window().maximize();
     	driver.get(prop.getProperty("url"));
 		loginPageObject l = new loginPageObject(driver);
@@ -117,12 +121,14 @@ public class Base {
 			}
 			catch(Exception e) {
 			 // driver.navigate().refresh();
+				Thread.sleep(1000);
 			}
 		Thread.sleep(3000);
 		try {
 			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
 		}
 			catch(Exception e) { 
+				Thread.sleep(1000);
 		}
 		Thread.sleep(2000);
 		userid=prop.getProperty("userid");
@@ -168,12 +174,19 @@ public class Base {
 		SubmitEditDetails=prop.getProperty("SubmitEditDetails");
 		usernameadmin=prop.getProperty("usernameadmin");
 		pwd=prop.getProperty("pwd");
-		
+		username=prop.getProperty("username");
 		
 		//FileOutputStream fout = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
 		
 		return driver;
 	}
+	
+	@SuppressWarnings("deprecation")
+	public void waitForWebElementPresent(WebElement element) {
+		  WebDriverWait Wait = new WebDriverWait(driver, 90);
+	        Wait.until(ExpectedConditions.visibilityOf(element));
+	    }
+
 
 @AfterClass
 public void afterclassmethod(){
@@ -184,7 +197,7 @@ public void afterclassmethod(){
 
 @AfterSuite
 public void aftersuitemethod(){
-	driver.quit();
+//	driver.quit();
 }
 
 

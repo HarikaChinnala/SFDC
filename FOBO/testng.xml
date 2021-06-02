@@ -5,8 +5,8 @@
     <classes>
   <!--  <class name="Regression.createAccountandEdit"/>
       <class name="Regression.createContactandEdit"/>
-      <class name="Regression.createLead"/>  -->
-      <class name="Regression.createOpportunity"/>
+      <class name="Regression.createLead"/> -->
+      <class name="Regression.createOpportunity"/> 
       <class name="Regression.createQuoteandConfigure"/>
       <class name="Regression.createContract"/>
       <class name="Regression.contractSubmitEdit"/>

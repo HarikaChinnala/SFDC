@@ -59,6 +59,7 @@ public class createAmendmentOpportunity extends Base {
 			}
 
 			catch (Exception e) {
+				
 				driver.switchTo().defaultContent();
 				Assert.assertTrue(false);
 			}
@@ -76,6 +77,7 @@ public class createAmendmentOpportunity extends Base {
 			}
 
 			catch (Exception e) {
+				
 				driver.switchTo().defaultContent();
 				Assert.assertTrue(false);
 			}
@@ -97,6 +99,7 @@ public class createAmendmentOpportunity extends Base {
 			}
 
 			catch (Exception e) {
+				
 				driver.switchTo().defaultContent();
 				Assert.assertTrue(false);
 			}
@@ -131,6 +134,7 @@ public class createAmendmentOpportunity extends Base {
 			}
 
 			catch (Exception e) {
+				
 				driver.switchTo().defaultContent();
 				Assert.assertTrue(false);
 			}
@@ -157,6 +161,7 @@ public class createAmendmentOpportunity extends Base {
 			}
 
 			catch (Exception e) {
+				
 				driver.switchTo().defaultContent();
 				Assert.assertTrue(false);
 			}
@@ -180,6 +185,7 @@ public class createAmendmentOpportunity extends Base {
 			try {
 				driver.findElement(By.xpath("//*[@class='x-box-inner ']/div/a/span/span/span[contains(text(),'Continue')]")).click();
 			} catch (Exception e) {
+				
 				int m = driver.findElements(By.xpath("//iframe")).size();
 				//System.out.println("m="+m);
 				if (m > 0) {
@@ -189,6 +195,7 @@ public class createAmendmentOpportunity extends Base {
 						try {
 							driver.findElement(By.xpath("//*[@class='x-box-inner ']/div/a/span/span/span[contains(text(),'Continue')]")).click();
 						} catch (Exception ex) {
+						
 							int n = driver.findElements(By.xpath("//iframe")).size();
 							//System.out.println("n="+n);
 							if (n > 0) {
@@ -198,6 +205,7 @@ public class createAmendmentOpportunity extends Base {
 									try {
 										driver.findElement(By.xpath("//*[@class='x-box-inner ']/div/a/span/span/span[contains(text(),'Continue')]")).click();
 									} catch (Exception exc) {
+										
 										driver.switchTo().defaultContent();
 									}
 								}

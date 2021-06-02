@@ -88,7 +88,7 @@ public class createContract extends Base {
 	        String  curl = driver.getCurrentUrl();
 	       String  id= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
 	        System.out.println("Contractid is:"+id);
-	        System.out.println("Contracturl"+curl);
+	        System.out.println("Contracturl is:"+curl);
 	        prop.setProperty("contractid", id);
 	        prop.setProperty("contracturl", curl);
 			try (final OutputStream outputstream = new FileOutputStream(
@@ -102,6 +102,7 @@ public class createContract extends Base {
 		try{
 		js.executeScript("arguments[0].click();", cp.getRelated());}
 		catch (Exception e3){
+			
 			driver.findElement(By.xpath("//*[@class='tabs__nav']/li/a[@title='Related']")).click();
 		}
 	
@@ -109,13 +110,14 @@ public class createContract extends Base {
 		js.executeScript("arguments[0].click();", cp.getmanageclauses());
 		}
 		catch (Exception e2){
+			
 			driver.findElement(By.xpath("(//*[@title='Managed Clauses'])[2]")).click();
 		}
 		
 		Thread.sleep(5000);
 		
 		int count= driver.findElements(By.xpath("//*[@role='grid']/tbody/tr")).size();
-		System.out.println(count);
+		//System.out.println(count);
 		
 		if(count>0)
 			System.out.println("Manage clauses are generated");

@@ -3,13 +3,16 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Regression.createAccountandEdit">
+      <class name="Regression.LoginPage">
         <methods>
-          <include name="editAccount"/>
+          <include name="amendContract"/>
+          <include name="eSignatureAmendment"/>
+          <include name="amendmentSubmitEdit"/>
           <include name="aftersuitemethod"/>
           <include name="afterclassmethod"/>
+          <include name="amendmentSubmitForSignature"/>
         </methods>
-      </class> <!-- Regression.createAccountandEdit -->
+      </class> <!-- Regression.LoginPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

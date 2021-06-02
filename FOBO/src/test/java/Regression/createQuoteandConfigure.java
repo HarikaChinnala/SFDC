@@ -42,17 +42,19 @@ public class createQuoteandConfigure extends Base {
 		createQuotePage qp= new createQuotePage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		try{
-		js.executeScript("arguments[0].click();", lp.getOpportunities());}
+		js.executeScript("arguments[0].click();", lp.getOpportunities());
+		}
 		catch (Exception e1){
+			
 			driver.findElement(By.cssSelector("[title='Opportunities']")).click();
 		}
 		//lp.getOpportunities().click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		lp.getopptxtbox().sendKeys(opportunityname);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		//lp.getsrchresult().click();
 		//String OppName = prop.getProperty("OppName");
 		driver.findElement(By.xpath("//*[@title='"
@@ -61,7 +63,7 @@ public class createQuoteandConfigure extends Base {
 		Thread.sleep(10000);
 		js.executeScript("arguments[0].click();", lp.getnewQuote()); 
 		
-		Thread.sleep(20000);
+		Thread.sleep(15000);
 		js.executeScript("arguments[0].click();",qp.getRNperiod());
 		Thread.sleep(5000);
 		//String RNperiod = prop.getProperty("RNperiod");
@@ -84,25 +86,17 @@ public class createQuoteandConfigure extends Base {
 		Thread.sleep(30000);
 		//driver.findElement(By.xpath("(//*[contains(text(),'Primary Quote')]/parent::div)/following-sibling::div[1]/span/slot/slot/force-lookup/div/force-hoverable-link/div/a/span[@id='window']")).click();
 		js.executeScript("arguments[0].click();", op.getquotelink());
-		Thread.sleep(30000);
+		Thread.sleep(20000);
 		//to be sent to data.property file
 		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
 		System.out.println("Quote created is:"+quote);
 		prop.setProperty("existquote", quote);
-		try (final OutputStream outputstream = new FileOutputStream(
-				"C:\\Users\\1753793\\eclipse-workspace\\SFDC\\FOBO\\src\\main\\java\\Regression\\data.properties");) {
+		try (final OutputStream outputstream = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}
-		
-	/*	 try (final OutputStream outputstream 
-	                = new FileOutputStream("data.properties");) {
-			 Properties prop = new Properties();
-			 prop.setProperty("existquote",existquote);
-			 
-		 }*/
 	    
-		
+		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);
        int x=driver.findElements(By.xpath("//iframe")).size();
@@ -117,6 +111,7 @@ public class createQuoteandConfigure extends Base {
         	}
         	
         	catch (Exception e) {
+        		
         		driver.switchTo().defaultContent();
         	}
         	}
@@ -135,6 +130,7 @@ public class createQuoteandConfigure extends Base {
         		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")));
         	}
         	catch (Exception e){
+        		Thread.sleep(1000);
         		driver.switchTo().defaultContent();
         	}
         	
@@ -164,6 +160,7 @@ public class createQuoteandConfigure extends Base {
         js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Save']/paper-button")));
        }
        catch (Exception exc){
+    	   Thread.sleep(1000);
     	   driver.switchTo().defaultContent();
        
        }

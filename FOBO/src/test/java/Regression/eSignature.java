@@ -61,6 +61,7 @@ public class eSignature extends Base {
 			l.clickskip().click();
 			}
 			catch(Exception e) {
+				Thread.sleep(1000);
 			 // driver.navigate().refresh();
 			}
 		Thread.sleep(3000);
@@ -68,6 +69,7 @@ public class eSignature extends Base {
 			driver.findElement(By.xpath("//*[@class='switch-to-lightning']")).click();
 		}
 			catch(Exception e) { 
+				Thread.sleep(1000);
 		}
 		//rm.otherUserlogin(driver);
 		// other user login
@@ -109,6 +111,7 @@ public class eSignature extends Base {
 	    		Thread.sleep(5000);
 	    		}
 	    	catch (Exception e){
+	    		
 	    		driver.switchTo().defaultContent();
 	    	}
 	    	
@@ -213,6 +216,7 @@ public class eSignature extends Base {
 						System.out.println(agreementstatus);		
 	       }		
 	       catch (Exception exc){
+	    	   Thread.sleep(1000);
 	       }
 	       
 					
@@ -227,12 +231,12 @@ public class eSignature extends Base {
 			        	System.out.println("Stage not moved to Pending Customer Signature");
 			        
 			      //loop to compensate manual interruption for signing document
-			        for(int m=0;m<=5;m++)
+			        for(int m=0;m<5;m++)
 			        {
 			        	driver.navigate().refresh();
-			        String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
+			 /*       String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
 			        if(stat.equals("Client Signed"))
-			        	break;
+			        	break;*/
 			        	Thread.sleep(20000);
 			        	
 			        }
@@ -243,6 +247,7 @@ public class eSignature extends Base {
 							System.out.println(agreementstatus);		
 		       }		
 		       catch (Exception exc){
+		    	   Thread.sleep(1000);
 		       }
 			        String CS = cp.getCSchev().getAttribute("aria-selected");
 			        //System.out.println(CS);

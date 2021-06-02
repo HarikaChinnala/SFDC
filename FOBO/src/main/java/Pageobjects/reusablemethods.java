@@ -56,6 +56,7 @@ public class reusablemethods extends Base {
 		 		driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
 		 	}
 		 	catch (Exception e){
+		 		
 		 	
 		 	 int m= driver.findElements(By.xpath("//iframe")).size();
 		 	 //System.out.println(m);
@@ -67,6 +68,7 @@ public class reusablemethods extends Base {
 			  driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
 		        	}
 		    	catch (Exception ex){
+		    		
 		    		int n= driver.findElements(By.xpath("//iframe")).size();
 		    	 	// System.out.println(n);
 		    	 	 if(n>0){
@@ -77,6 +79,7 @@ public class reusablemethods extends Base {
 		    		  driver.findElement(By.xpath("//*[contains(text(),'Continue')]")).click();
 		    	        	}
 		    	    	catch (Exception exc){
+		    	    		
 		      	driver.switchTo().defaultContent();
 		    	}
 		 		}
@@ -144,6 +147,7 @@ public class reusablemethods extends Base {
     		Thread.sleep(5000);
     		}
     	catch (Exception e){
+    		
     		driver.switchTo().defaultContent();
     	}
     	

@@ -70,6 +70,7 @@ public class cloneQuote extends Base {
         		js.executeScript("arguments[0].click();", qp.getclone());
         	}
         	catch (Exception e){
+        		
         		driver.switchTo().defaultContent();
         	}
         	
