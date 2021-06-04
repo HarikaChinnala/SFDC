@@ -134,7 +134,7 @@ public class amendmentSubmitForSignature extends Base {
             List<WebElement> Cases_List = driver.findElements(
                     By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/span[contains(text(),'Contract Submission')]"));
             int Cases_Count = Cases_List.size();
-            System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
+            System.out.println("Number of Case records when Submit For Signature is done = " + Cases_Count);
             if (Cases_Count == 1) {
                 Assert.assertTrue(true);
             } else {

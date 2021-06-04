@@ -30,7 +30,7 @@ import Regression.Base;
 public class LoginPage extends Base {
 	
 	  public String curl; public String contractid; public String amendurl;
-	 
+
 
 	@Test(priority = 1)
 	public void createOpp() throws IOException, InterruptedException {
@@ -47,7 +47,7 @@ public class LoginPage extends Base {
 		// String Accountname = prop.getProperty("Accountname");
 		driver.findElement(By.xpath("//*[text()='" + Accountname + "']")).click();
 		accountPage ap = new accountPage(driver);
-		Thread.sleep(20000);
+		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", ap.getOppsCont());
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", ap.getOppsNew());
@@ -71,7 +71,6 @@ public class LoginPage extends Base {
 		// String opptype=prop.getProperty("opptype");
 		js.executeScript("arguments[0].click();", cop.getOppType());
 		driver.findElement(By.xpath("//*[@title='" + opptype + "']")).click();
-		;
 
 		js.executeScript("arguments[0].click();", cop.getpilot());
 		// String pilotvalue=prop.getProperty("pilotvalue");
@@ -79,7 +78,6 @@ public class LoginPage extends Base {
 		// String sellinglane=prop.getProperty("sellinglane");
 		js.executeScript("arguments[0].click();", cop.getsellinglane());
 		driver.findElement(By.xpath("//*[@title='" + sellinglane + "']")).click();
-		;
 		// cop.getSecuritySL().click();
 
 		// String usecase=prop.getProperty("usecase");
@@ -190,13 +188,7 @@ public class LoginPage extends Base {
 		int x = driver.findElements(By.xpath("//iframe")).size();
 		for (int i = 0; i < x; i++) {
 			driver.switchTo().frame(i);
-			// WebElement add =driver.findElement(By.xpath("//*[@name='Add
-			// Products']/paper-button"));
-			// System.out.println(add.isEnabled());
 			try {
-				// driver.findElement(By.xpath("//*[@name='Add
-				// Products']/paper-button")).click();
-
 				js.executeScript("arguments[0].click();",
 						driver.findElement(By.xpath("//*[@name='Add Products']/paper-button")));
 			}
@@ -208,15 +200,12 @@ public class LoginPage extends Base {
 		}
 
 		driver.findElement(By.xpath("//*[@id='items']/sb-table-row[4]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		driver.switchTo().defaultContent();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		int j = driver.findElements(By.xpath("//iframe")).size();
 		for (int a = 0; a < j; a++) {
 			driver.switchTo().frame(a);
-			// WebElement checkbox
-			// =driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox"));
-			// if(driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")).isEnabled()==true){
 			try {
 				js.executeScript("arguments[0].click();", driver.findElement(By.xpath(
 						"//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")));
@@ -229,7 +218,7 @@ public class LoginPage extends Base {
 
 		driver.findElement(By.xpath("//*[text()='Select']")).click();
 
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 		driver.findElement(By
 				.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -241,8 +230,7 @@ public class LoginPage extends Base {
 		Thread.sleep(10000);
 
 		// QUICK SAVE
-		// driver.findElement(By.xpath("//*[@name='Quick
-		// Save']/paper-button")).click();
+	
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@name='Quick Save']/paper-button")));
 		Thread.sleep(30000);
 
@@ -272,11 +260,18 @@ public class LoginPage extends Base {
 		Thread.sleep(60000);
 		rm.generatedoc(driver);
 		js.executeScript("arguments[0].click();", qp.getRelated());
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 
 		Actions a = new Actions(driver);
 		a.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
+		try{
+		a.moveToElement(qp.getFiles()).build().perform();
+		}
+		catch(Exception e){
+			js.executeScript("window.scrollBy(0,-1000)", "");
+		}
+		
 
 		String file = qp.getFiles().getAttribute("title");
 		if (file.startsWith("Quote Proposal -"))
@@ -653,6 +648,36 @@ public class LoginPage extends Base {
 		// driver = initialiseDriver();
 		reusablemethods rm = new reusablemethods(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get(curl);
+		// contractid = prop.getProperty("contractid");
+		contractPage cp = new contractPage(driver);
+		Thread.sleep(10000);
+		js.executeScript("arguments[0].click();", cp.getRelated());
+		Thread.sleep(10000);
+
+		((JavascriptExecutor) driver).executeScript("scroll(0,600);");
+		Thread.sleep(10000);
+
+		WebElement upload = driver
+				.findElement(By.xpath("//*[@data-key='upload'][@class='slds-button__icon slds-button__icon_left']"));
+
+		if (upload.isDisplayed()) {
+			System.out.println("File is not attached");
+
+			cp.getdropdown().click();
+			js.executeScript("arguments[0].click();", cp.getGenerateDoc());
+			Thread.sleep(80000);
+			rm.generatedoc(driver);
+
+			Thread.sleep(20000);
+		} else {
+			String file = cp.getFiles().getAttribute("title");
+			System.out.println(file);
+			if (file.endsWith("- " + contractid + ".docx"))
+
+				System.out.println("File is attached");
+		}
+
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@title='User']")));
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();",
@@ -701,7 +726,7 @@ public class LoginPage extends Base {
 			try {
 				js.executeScript("arguments[0].click();",
 						driver.findElement(By.xpath("//*[@id='topButtonRow']/input[4][@name='login']")));
-				 System.out.println("clicked login");
+		//		 System.out.println("clicked login");
 				Thread.sleep(5000);
 			} catch (Exception e) {
 
@@ -713,35 +738,7 @@ public class LoginPage extends Base {
 		Thread.sleep(5000);
 		// contracturl=prop.getProperty("contracturl");
 		driver.get(curl);
-		// contractid = prop.getProperty("contractid");
-		contractPage cp = new contractPage(driver);
 		Thread.sleep(10000);
-		js.executeScript("arguments[0].click();", cp.getRelated());
-		Thread.sleep(10000);
-
-		((JavascriptExecutor) driver).executeScript("scroll(0,600);");
-		Thread.sleep(10000);
-
-		WebElement upload = driver
-				.findElement(By.xpath("//*[@data-key='upload'][@class='slds-button__icon slds-button__icon_left']"));
-
-		if (upload.isDisplayed()) {
-			System.out.println("File is not attached");
-
-			cp.getdropdown().click();
-			js.executeScript("arguments[0].click();", cp.getGenerateDoc());
-			Thread.sleep(80000);
-			rm.generatedoc(driver);
-
-			Thread.sleep(20000);
-		} else {
-			String file = cp.getFiles().getAttribute("title");
-			System.out.println(file);
-			if (file.endsWith("- " + contractid + ".docx"))
-
-				System.out.println("File is attached");
-		}
-
 		cp.getdropdown().click();
 
 		js.executeScript("arguments[0].click();", cp.getesign());
@@ -847,18 +844,24 @@ public class LoginPage extends Base {
 	}
 
 	@Test(dependsOnMethods = { "eSignature" })
-
 	public void contractSubmitForSignature() throws IOException, InterruptedException {
+		
 		contractPage c = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.get(curl);
 		Thread.sleep(15000);
 		js.executeScript("window.scrollBy(0,2700)", "");
 		Thread.sleep(3000);
+		
 		Actions act = new Actions(driver);
 		WebElement ele = driver.findElement(By.xpath(
 				"((//*[text() = 'Billing Contact'])//parent::div)//following-sibling::div/span[@class='test-id__field-value slds-form-element__static slds-grow ']"));
+		try{
 		act.doubleClick(ele).perform();
+		}
+		catch(Exception e){
+			js.executeScript("arguments[0].click();", driver.findElement(By.xpath("((//*[text() = 'Billing Contact'])//parent::div)//following-sibling::div/button/lightning-primitive-icon")));
+		}
 		Thread.sleep(5000);
 		driver.findElement(By
 				.xpath("(((//*[text() = 'Billing Contact'])//parent::label)//following-sibling::div)/div/div/div/input"))
@@ -957,8 +960,7 @@ public class LoginPage extends Base {
 	}
 
 	@Test(dependsOnMethods = { "contractSubmitForSignature" })
-	public void attentionrequired() throws IOException, InterruptedException {
-		// driver= initialiseDriver();
+	  public void attentionrequired() throws IOException, InterruptedException {
 		landingPage lp = new landingPage(driver);
 		contractPage cp = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -971,12 +973,21 @@ public class LoginPage extends Base {
 		// String contractid = prop.getProperty("contractid");
 		driver.findElement(By.xpath("//*[@title='" + contractid + "']")).click();
 		// driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005Dg0AAE/view");
+		Thread.sleep(5000);
+		driver.navigate().refresh();
+		//((JavascriptExecutor) driver).executeScript("scroll(0,100);");
 		Thread.sleep(10000);
-
-		((JavascriptExecutor) driver).executeScript("scroll(0,100);");
-		Thread.sleep(1000);
 		Actions action = new Actions(driver);
+	try{
+		action.moveToElement(cp.getstatus()).build().perform();
+		Thread.sleep(5000);
 		action.doubleClick(cp.getstatus()).build().perform();
+		}
+		catch(Exception e){
+			js.executeScript("arguments[0].click();", driver.findElement(By.xpath("((//span[contains(text(),'Status')])/parent::div)/following-sibling::div/button/lightning-primitive-icon")));
+
+
+		}
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.select")));
 		Thread.sleep(1000);
@@ -1009,11 +1020,18 @@ public class LoginPage extends Base {
 	public void awaitingactivation() throws IOException, InterruptedException {
 
 		contractPage cp = new contractPage(driver);
-		((JavascriptExecutor) driver).executeScript("scroll(0,100);");
+		//((JavascriptExecutor) driver).executeScript("scroll(0,100);");
 		Thread.sleep(1000);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Actions action = new Actions(driver);
+		try{
+		action.moveToElement(cp.getstatus()).build().perform();
 		action.doubleClick(cp.getstatus()).build().perform();
+		}
+		catch (Exception e){
+			js.executeScript("arguments[0].click();", driver.findElement(By.xpath("((//span[contains(text(),'Status')])/parent::div)/following-sibling::div/button/lightning-primitive-icon")));
+
+		}
 		Thread.sleep(3000);
 		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.select")));
 		Thread.sleep(1000);
@@ -1035,11 +1053,10 @@ public class LoginPage extends Base {
 
 	// contract activation
 	@Test(dependsOnMethods = { "awaitingactivation" })
-
 	public void contractactivation() throws IOException, InterruptedException {
-
 		contractPage cp = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get(curl);
 		js.executeScript("arguments[0].click();", cp.getActivate());
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", cp.getActivatepopup());
@@ -1052,7 +1069,17 @@ public class LoginPage extends Base {
 			System.out.println("Contract is Activated");
 		} else
 			System.out.println("Contract is not Activated");
-
+		Thread.sleep(8000);
+		
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
+		 
+		Thread.sleep(10000);
+		String chev=driver.findElement(By.xpath("//*[@title='7 - Won']")).getAttribute("aria-selected");
+		  if (chev.equals("true")){
+	        	System.out.println("Opportunity is moved to 7-won stage");
+	        }
+	        else 
+	        	System.out.println("Opportunity is not moved to 7-won stage");
 		// driver.close();
 
 	}
@@ -1298,10 +1325,14 @@ public class LoginPage extends Base {
 		// opportunity type
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 		((JavascriptExecutor) driver).executeScript("scroll(0,500);");
+		try{
 		a.doubleClick(driver.findElement(
 				By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div"))).build()
 				.perform();
-		;
+		}
+		catch(Exception e){
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div/button")));
+		}
 		Thread.sleep(10000);
 		// js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity
 		// Type')]//parent::label)/following-sibling::div")));
@@ -1348,15 +1379,14 @@ public class LoginPage extends Base {
 		Thread.sleep(5000);
 
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@name='SaveEdit']")));
-		Thread.sleep(5000);
+		Thread.sleep(20000);
 
 		// driver.close();
 	}
 
 	@Test(dependsOnMethods = { "createAmendmentOpportunity" })
 	public void amendmentSubmitEdit() throws IOException, InterruptedException {
-	driver.get(amendurl);
-	contractPage c = new contractPage(driver);
+		contractPage c = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Thread.sleep(20000);
 		driver.findElement(By.xpath("//span[contains(text(),'Show more actions')]//parent::button")).click(); // Changed
@@ -1597,6 +1627,43 @@ public class LoginPage extends Base {
 		reusablemethods rm = new reusablemethods(driver);
 		oppPage op = new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get(amendurl);
+		Thread.sleep(10000);
+		String contractchev = op.getcontracting().getAttribute("aria-selected");
+		if (contractchev.equals("true")) {
+
+		} else {
+			js.executeScript("arguments[0].click();", op.getcontracting());
+			js.executeScript("arguments[0].click();", op.getmark());
+		}
+		Thread.sleep(10000);
+		js.executeScript("arguments[0].click();", op.getRelated());
+		Thread.sleep(10000);
+
+		((JavascriptExecutor) driver).executeScript("scroll(0,1000);");
+		Thread.sleep(10000);
+
+		WebElement upload = driver
+				.findElement(By.xpath("//*[@data-key='upload'][@class='slds-button__icon slds-button__icon_left']"));
+
+		if (upload.isDisplayed()) {
+			System.out.println("File is not attached");
+
+			// cp.getdropdown().click();
+			js.executeScript("arguments[0].click();", op.getGenamend());
+			Thread.sleep(80000);
+			rm.generatedoc(driver);
+
+		} else {
+			String file = op.getFiles().getAttribute("title");
+			System.out.println(file);
+			
+
+			System.out.println("File is attached");
+		}
+		Thread.sleep(5000);
+		driver.navigate().refresh();
+		Thread.sleep(10000);
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@title='User']")));
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();",
@@ -1653,41 +1720,6 @@ public class LoginPage extends Base {
 		Thread.sleep(5000);
 		// contracturl=prop.getProperty("contracturl");
 		driver.get(amendurl);
-		Thread.sleep(10000);
-		String contractchev = op.getcontracting().getAttribute("aria-selected");
-		if (contractchev.equals("true")) {
-
-		} else {
-			js.executeScript("arguments[0].click();", op.getcontracting());
-			js.executeScript("arguments[0].click();", op.getmark());
-		}
-		Thread.sleep(10000);
-		js.executeScript("arguments[0].click();", op.getRelated());
-		Thread.sleep(10000);
-
-		((JavascriptExecutor) driver).executeScript("scroll(0,1000);");
-		Thread.sleep(10000);
-
-		WebElement upload = driver
-				.findElement(By.xpath("//*[@data-key='upload'][@class='slds-button__icon slds-button__icon_left']"));
-
-		if (upload.isDisplayed()) {
-			System.out.println("File is not attached");
-
-			// cp.getdropdown().click();
-			js.executeScript("arguments[0].click();", op.getGenamend());
-			Thread.sleep(80000);
-			rm.generatedoc(driver);
-
-		} else {
-			String file = op.getFiles().getAttribute("title");
-			System.out.println(file);
-			
-
-			System.out.println("File is attached");
-		}
-		Thread.sleep(5000);
-		driver.navigate().refresh();
 		Thread.sleep(10000);
 		op.getdropdown().click();
 		Thread.sleep(2000);
@@ -1795,9 +1827,7 @@ public class LoginPage extends Base {
 	@Test(dependsOnMethods = { "eSignatureAmendment" })
 	public void amendmentSubmitForSignature() throws IOException, InterruptedException {
 
-		// driver= initialiseDriver();
-
-		contractPage c = new contractPage(driver);
+		 	contractPage c = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		driver.get(amendurl);
@@ -1882,7 +1912,7 @@ public class LoginPage extends Base {
 			List<WebElement> Cases_List = driver.findElements(
 					By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/span[contains(text(),'Contract Submission')]"));
 			int Cases_Count = Cases_List.size();
-			System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
+			System.out.println("Number of Case records when Submit For Signature is done = " + Cases_Count);
 			if (Cases_Count == 1) {
 				Assert.assertTrue(true);
 			} else {
@@ -1911,9 +1941,7 @@ public class LoginPage extends Base {
 
 	@Test(dependsOnMethods = { "amendmentSubmitForSignature" })
 	public void amendContract() throws IOException, InterruptedException {
-		// driver= initialiseDriver();
-
-		oppPage op = new oppPage(driver);
+			oppPage op = new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.get(amendurl);
 		Thread.sleep(15000);
@@ -1929,8 +1957,13 @@ public class LoginPage extends Base {
 			// action.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
 			// Thread.sleep(10000);
 			// ((JavascriptExecutor)driver).executeScript("scroll(0,4000);");
+			try{
 			action.moveToElement(op.getAmendcontractstatus()).build().perform();
 			action.doubleClick(op.getAmendcontractstatus()).build().perform();
+			}
+			catch(Exception e){
+				js.executeScript("arguments[0].click();",driver.findElement(By.xpath("((//*[contains(text(),'Amendment Contract Status')]//parent::div)/following-sibling::div)/button")));	
+			}
 			// js.executeScript("window.scrollBy(0,50)", "");
 			Thread.sleep(5000);
 			action.moveToElement(driver.findElement(

@@ -5,12 +5,25 @@
     <classes>
       <class name="Regression.LoginPage">
         <methods>
+          <include name="contractactivation"/>
           <include name="amendContract"/>
+          <include name="createContract"/>
+          <include name="createOpp"/>
+          <include name="eSignature"/>
+          <include name="afterclassmethod"/>
+          <include name="generatequoteproposal"/>
+          <include name="attentionrequired"/>
+          <include name="configureQuote"/>
+          <include name="createAmendmentOpportunity"/>
+          <include name="contractSubmitForSignature"/>
+          <include name="approveQuote"/>
+          <include name="Submitedit"/>
+          <include name="createQuote"/>
           <include name="eSignatureAmendment"/>
           <include name="amendmentSubmitEdit"/>
           <include name="aftersuitemethod"/>
-          <include name="afterclassmethod"/>
           <include name="amendmentSubmitForSignature"/>
+          <include name="awaitingactivation"/>
         </methods>
       </class> <!-- Regression.LoginPage -->
     </classes>

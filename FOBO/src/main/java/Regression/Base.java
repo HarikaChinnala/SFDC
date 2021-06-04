@@ -77,6 +77,7 @@ public class Base {
 	protected String usernameadmin;
 	protected String pwd;
 	protected String username;
+	protected String productname;
 
 	public	Properties prop = new Properties();
 	
@@ -175,7 +176,7 @@ public class Base {
 		usernameadmin=prop.getProperty("usernameadmin");
 		pwd=prop.getProperty("pwd");
 		username=prop.getProperty("username");
-		
+		productname=prop.getProperty("productname");
 		//FileOutputStream fout = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
 		
 		return driver;

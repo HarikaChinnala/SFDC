@@ -96,7 +96,7 @@ public class activateContract extends Base {
 			js.executeScript("arguments[0].click();", cp.getAAdrop());
 			js.executeScript("arguments[0].click();", cp.geteditsave());
 			Thread.sleep(10000);
-			for(int m=0;m<=4;m++)
+			for(int m=0;m<=2;m++)
 	        {
 	        	driver.navigate().refresh();
 	        	Thread.sleep(10000);
@@ -129,7 +129,16 @@ public class activateContract extends Base {
 	        }
 	        else 
 	        	System.out.println("Contract is not Activated");
-	       
+		  
+		  js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
+		 Thread.sleep(10000);
+		
+		  String chev=driver.findElement(By.xpath("//*[@title='7 - Won']")).getAttribute("aria-selected");
+		  if (chev.equals("true")){
+	        	System.out.println("Opportunity is moved to 7-won stage");
+	        }
+	        else 
+	        	System.out.println("Opportunity is not moved to 7-won stage");
 			  driver.close();
 		
 	}

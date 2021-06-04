@@ -267,7 +267,7 @@ public class createAmendmentOpportunity extends Base {
 		}
 		
 		
-
+driver.navigate().refresh();
 //		driver.get(amendurl);
 		Thread.sleep(15000);
 	 	//opportunity type	
