@@ -1388,6 +1388,7 @@ public class LoginPage extends Base {
 	public void amendmentSubmitEdit() throws IOException, InterruptedException {
 		contractPage c = new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.get(amendurl);
 		Thread.sleep(20000);
 		driver.findElement(By.xpath("//span[contains(text(),'Show more actions')]//parent::button")).click(); // Changed
 		Thread.sleep(10000);

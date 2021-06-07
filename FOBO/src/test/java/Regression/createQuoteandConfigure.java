@@ -28,6 +28,7 @@ import Pageobjects.landingPage;
 import Pageobjects.loginPageObject;
 import Pageobjects.oppPage;
 import Pageobjects.reusablemethods;
+import Regression.productConfiguration;
 import Regression.Base;
 
 public class createQuoteandConfigure extends Base {
@@ -81,6 +82,7 @@ public class createQuoteandConfigure extends Base {
 		{
 			
 			oppPage op= new oppPage(driver);
+			productConfiguration pc= new productConfiguration(driver);
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", op.getDetail());
 		Thread.sleep(30000);
@@ -90,80 +92,12 @@ public class createQuoteandConfigure extends Base {
 		//to be sent to data.property file
 		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
 		System.out.println("Quote created is:"+quote);
-		prop.setProperty("existquote", quote);
-		try (final OutputStream outputstream = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
-			prop.store(outputstream, "File Updated");
-			outputstream.close();
-		}
-	    
+	 
 		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);
-       int x=driver.findElements(By.xpath("//iframe")).size();
-        for(int i=0; i<x; i++){
-        	driver.switchTo().frame(i);
-        	//WebElement add =driver.findElement(By.xpath("//*[@name='Add Products']/paper-button"));
-        	//System.out.println(add.isEnabled());
-        	try{
-        	//driver.findElement(By.xpath("//*[@name='Add Products']/paper-button")).click();
-        		
-        		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Add Products']/paper-button")));
-        	}
-        	
-        	catch (Exception e) {
-        		
-        		driver.switchTo().defaultContent();
-        	}
-        	}
-        
-	
-        driver.findElement(By.xpath("//*[@id='items']/sb-table-row[4]")).click();    
-        Thread.sleep(10000);      
-        driver.switchTo().defaultContent();
-        Thread.sleep(10000);
-        int j=driver.findElements(By.xpath("//iframe")).size();
-        for(int a=0; a<j; a++){
-        	driver.switchTo().frame(a);
-        	//WebElement checkbox =driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox"));
-        	//if(driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")).isEnabled()==true){
-        	try{	
-        		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")));
-        	}
-        	catch (Exception e){
-        		Thread.sleep(1000);
-        		driver.switchTo().defaultContent();
-        	}
-        	
-        }
-     
-        driver.findElement(By.xpath("//*[text()='Select']")).click();
-        
-        Thread.sleep(10000);
-        
-        driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
-        driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
-        driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
-        
-        Thread.sleep(10000);
-        
-        //QUICK SAVE
-        //driver.findElement(By.xpath("//*[@name='Quick Save']/paper-button")).click();
-        js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Quick Save']/paper-button")));
-        Thread.sleep(30000);
-        
-        //SAVE
-        //driver.findElement(By.xpath("//*[@name='Save']/paper-button")).click();
-        js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Save']/paper-button")));
-       try{
-    	  //driver.navigate().refresh();
-    	   Thread.sleep(30000); 
-        js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Save']/paper-button")));
-       }
-       catch (Exception exc){
-    	   Thread.sleep(1000);
-    	   driver.switchTo().defaultContent();
-       
-       }
+		// configured products
+		pc.productConfiguration();
         driver.navigate().refresh();
         Thread.sleep(10000);
 		}
