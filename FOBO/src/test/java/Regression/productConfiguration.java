@@ -559,8 +559,7 @@ public class productConfiguration extends Base {
 	}
 	else if(productname.equals("RealTime Identity"))
 	{
-		driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-				.sendKeys("5");
+		js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 		driver.findElement(By
 				.xpath("//*[@label='Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
 				.click();
