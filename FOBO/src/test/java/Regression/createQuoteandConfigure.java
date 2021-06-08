@@ -97,7 +97,7 @@ public class createQuoteandConfigure extends Base {
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);
 		// configured products
-		pc.productConfiguration();
+		pc.productConfiguration(sellinglane, productname);
         driver.navigate().refresh();
         Thread.sleep(10000);
 		}

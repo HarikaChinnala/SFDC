@@ -34,13 +34,11 @@ import Regression.Base;
 
 public class productConfiguration extends Base {
 	public productConfiguration(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		super();
-		//setTitle();
-		PageFactory.initElements(driver, this);
+		this.driver=driver;
+		
 	}
 	
-	public void productConfiguration() throws InterruptedException{
+	public  WebDriver productConfiguration(String sellinglane, String productname) throws InterruptedException{
 		oppPage op = new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Thread.sleep(30000);
@@ -637,7 +635,7 @@ public class productConfiguration extends Base {
 	}driver.navigate().refresh();
 	Thread.sleep(10000);
 //	driver.close();
-	return;
+	return driver;
 
 	}
 
