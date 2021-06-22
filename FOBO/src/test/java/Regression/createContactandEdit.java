@@ -4,10 +4,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -34,13 +36,13 @@ public class createContactandEdit extends Base {
 			contactPage cp= new contactPage(driver);
 			landingPage lp= new landingPage(driver);
 		js.executeScript("arguments[0].click();", lp.getcontacts());
-		Thread.sleep(2000);
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+//		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", cp.getNewContact());
 		cp.getfirstname().sendKeys(firstname1);
 		cp.getlastnamee().sendKeys(lastname1);
 		cp.getemail().sendKeys(email1);
 		cp.getAccountname().sendKeys(Accountname1);
-		//String Accountname= prop.getProperty("Accountname1");
 		Thread.sleep(5000);
 		cp.getAccountname().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
@@ -50,8 +52,10 @@ public class createContactandEdit extends Base {
 		
 		cp.getcountry().sendKeys(country);
 		cp.getsavecontact().click();
-		Thread.sleep(10000);
+		getsuccessmessage();
+		Thread.sleep(5000);
 		driver.navigate().refresh();
+
 	}
 	//edit contact
 	@Test(priority=2)
@@ -61,19 +65,26 @@ public class createContactandEdit extends Base {
 		contactPage cp= new contactPage(driver);		
 		landingPage lp= new landingPage(driver);
 		js.executeScript("arguments[0].click();", lp.getcontacts());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		//String existingcontactname = prop.getProperty("existingcontactname");
 		driver.findElement(By.xpath("//*[text()='"
 				+ existingcontactname
 				+ "']")).click();
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", cp.getedit());
 			cp.getfirstname().clear();
 			cp.getfirstname().sendKeys(newfirstname);
 			cp.getsavecontact().click();
-			//driver.findElement(By.xpath("(//*[text()='Save'])[2]")).click();
+			getsuccessmessage();
 			Thread.sleep(5000);
 			driver.close();
 		
+	}
+	public void getsuccessmessage(){
+		WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+		waitForWebElementPresent(msg);
+		WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+		if(sm.getText().contains("success"))
+		System.out.println(msg.getText());
 	}
 }

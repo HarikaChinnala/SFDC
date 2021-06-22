@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -27,15 +28,17 @@ public class createLead extends Base {
 	public void createLead() throws IOException, InterruptedException
 	{
 		driver= initialiseDriver();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		landingPage lp= new landingPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", lp.getLeads());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
+		waitForWebElementPresent(lp.getleadnew());
 		lp.getleadnew().click();;
 		createLeadPage clp= new createLeadPage(driver);
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		
+		waitForWebElementPresent(clp.getfirstname());
 		clp.getfirstname().sendKeys(firstname);
 		clp.getlastname().sendKeys(lastname);
 		clp.getemail().sendKeys(email);
@@ -48,6 +51,7 @@ public class createLead extends Base {
 		clp.getpostalcode().sendKeys(postalcode);
 		clp.getcountry().sendKeys(country);
 		clp.getsave().click();
+		getsuccessmessage();
 		Thread.sleep(10000);
 	}
 		//convert lead
@@ -56,11 +60,23 @@ public class createLead extends Base {
 		{
 			Thread.sleep(5000);	
 		createLeadPage clp= new createLeadPage(driver);
+		waitForWebElementPresent(clp.getconvert());
 		clp.getconvert().click();
 		Thread.sleep(10000);
+		waitForWebElementPresent(clp.getcon());
 		clp.getcon().click();
 		Thread.sleep(20000);
+		waitForWebElementPresent(driver.findElement(By.xpath("//*[@class='title']/span")));
+		System.out.println(driver.findElement(By.xpath("//*[@class='title']/span")).getText());
+
 	driver.close();
 		
 	}
+		public void getsuccessmessage(){
+			WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+			waitForWebElementPresent(msg);
+			WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+			if(sm.getText().contains("success"))
+			System.out.println(msg.getText());
+		}
 }

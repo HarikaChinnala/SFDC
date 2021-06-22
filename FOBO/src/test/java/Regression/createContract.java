@@ -69,15 +69,22 @@ public class createContract extends Base {
 		
 		
 		driver.navigate().refresh();
-		Thread.sleep(10000);
-		 String url=driver.getCurrentUrl();
+		Thread.sleep(20000);
+/*		 String url=driver.getCurrentUrl();
 	        if(url.contains("ltnstage")){
 		js.executeScript("arguments[0].click();", op.getcontractlink());
 		Thread.sleep(5000);
 	        }
 	        else
 	        	js.executeScript("arguments[0].click();", op.getcontractlinkuat());
-			
+*/
+		try{
+			js.executeScript("arguments[0].click();", op.getcontractlink());
+		}
+		catch(Exception e)
+		{
+			js.executeScript("arguments[0].click();", op.getcontractlinkuat());
+		}
 	        Thread.sleep(5000);
 	        driver.navigate().refresh();
 	        

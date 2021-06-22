@@ -39,9 +39,9 @@ public class productConfiguration extends Base {
 	}
 	
 	public  WebDriver productConfiguration(String sellinglane, String productname) throws InterruptedException{
-		oppPage op = new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Thread.sleep(30000);
+//		waitForWebElementPresent(driver.findElement(By.xpath("//*[@name='Add Products']/paper-button")));
 		int x = driver.findElements(By.xpath("//iframe")).size();
 		for (int i = 0; i < x; i++) {
 			driver.switchTo().frame(i);
@@ -56,28 +56,27 @@ public class productConfiguration extends Base {
 			}
 		}
 
-		if (sellinglane.equals("Risk"))
+		if (sellinglane.equals("Risk")){
 			driver.findElement(By.xpath("//*[@id='items']/sb-table-row[3]")).click();
-		else if (sellinglane.equals("Marketing"))
+			}
+		else if (sellinglane.equals("Marketing")){
 			driver.findElement(By.xpath("//*[@id='items']/sb-table-row[2]")).click();
-		else if (sellinglane.equals("Communications"))
+		}
+		else if (sellinglane.equals("Communications")){
 			driver.findElement(By.xpath("//*[@id='items']/sb-table-row[1]")).click();
-		else if (sellinglane.equals("Security"))
+			}
+		else if (sellinglane.equals("Security")){
 			driver.findElement(By.xpath("//*[@id='items']/sb-table-row[4]")).click();
+		}
 		Thread.sleep(5000);
 		driver.switchTo().defaultContent();
 		// Thread.sleep(3000);
 		Actions act = new Actions(driver);
-		// act.keyDown(Keys.CONTROL).sendKeys(Keys.END).build().perform();
-		// js.executeScript("window.scrollBy(0,1000)");
-		Thread.sleep(5000);
+	Thread.sleep(5000);
 		int j = driver.findElements(By.xpath("//iframe")).size();
 		for (int a = 0; a < j; a++) {
 			driver.switchTo().frame(a);
-			// WebElement checkbox
-			// =driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox"));
-			// if(driver.findElement(By.xpath("//*[@name='UltraDNS']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")).isEnabled()==true){
-			try {
+		try {
 				try {
 					js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@name='" + productname
 							+ "']/sb-swipe-container/div/div/sb-group/div/div/sb-table-cell-select/div/paper-checkbox")));
@@ -98,7 +97,7 @@ public class productConfiguration extends Base {
 		driver.findElement(By.xpath("//*[text()='Select']")).click();
 
 		Thread.sleep(10000);
-
+		if (sellinglane.equals("Risk")){
 		if (productname.equals("Contact Compliance Risk")) {
 			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
 					.sendKeys("5");
@@ -404,10 +403,10 @@ public class productConfiguration extends Base {
 
 		}
 
-	
+	} 
 	// Marketing products
-
-	else if(productname.equals("AdAdvisor"))
+		else if (sellinglane.equals("Marketing")){
+	 if(productname.equals("AdAdvisor"))
 
 	{
 		driver.findElement(By
@@ -612,6 +611,15 @@ public class productConfiguration extends Base {
 				.click();
 
 	}
+		}
+		else if (sellinglane.equals("Communications")){
+			//communication products
+
+			
+			}
+		else if (sellinglane.equals("Security")){
+			//Security products
+		}
 
 	
 

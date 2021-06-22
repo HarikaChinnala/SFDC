@@ -29,6 +29,7 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 public class contractSubmitEdit extends Base {
+	public String type;
 
 	@Test(priority=1)
 	public void Submitedit() throws IOException, InterruptedException
@@ -39,7 +40,8 @@ public class contractSubmitEdit extends Base {
 		createContract cc=new createContract();
 		contractPage c= new contractPage(driver);
 		driver.get(contracturl);
-		
+		type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
+		System.out.println(type);
 		//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		//To Check the status of the Chevron
@@ -82,7 +84,7 @@ public class contractSubmitEdit extends Base {
 			}
 		}
 		
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 		//To Check the status of the Chevron
 		if(c.Chevron_EditUnderReview.getAttribute("class").contains("active"))
 		{
@@ -102,13 +104,13 @@ public class contractSubmitEdit extends Base {
 		Assert.assertEquals(c.Contract_Status().getText(), "Edit Under Review");
 		
 		c.Related_Tab().click();
-		
+		if(type.equals("Service Order")){
 		//Cases
 		c.Cases_Section().click();
 		Thread.sleep(5000);
 		driver.navigate().refresh();
 		try {
-			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request -- Security')]"));
+			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request')]"));
 			int Cases_Count = Cases_List.size();
 			System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
 			if(Cases_Count == 1) {
@@ -127,11 +129,39 @@ public class contractSubmitEdit extends Base {
 		catch(Exception e){
 			
 			System.out.println("No Case Records");
+			if(type.equals("Service Order"))
 			Assert.assertFalse(true);
+		}
+		}
+		else if(type.equals("Legal")){
+			c.Cases_Section().click();
+			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request')]"));
+			int Cases_Count = Cases_List.size();
+			System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
+			
+			
+		}
+		
+		else if(type.equals("Master Service Agreement (MSA)")){
+			c.Cases_Section().click();
+			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request')]"));
+			int Cases_Count = Cases_List.size();
+			System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
+			
+			
+		}
+		else if(type.equals("Reseller Partner Agreement")){
+			c.Cases_Section().click();
+			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Edit Request')]"));
+			int Cases_Count = Cases_List.size();
+			System.out.println("Number of Case records when Submit Edit is done = " + Cases_Count);
+			
+			
 		}
 		
 		driver.navigate().back();
 		Thread.sleep(10000);
+		
 		
 		//logout fron existing user
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));

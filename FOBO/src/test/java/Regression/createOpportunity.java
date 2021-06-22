@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,7 +33,8 @@ public class createOpportunity extends Base {
 		landingPage lp= new landingPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", lp.getAccount());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
+		waitForWebElementPresent(lp.getAcctbox());
 		lp.getAcctbox().sendKeys(Accountname);
 		lp.getAcctbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
@@ -44,10 +46,12 @@ public class createOpportunity extends Base {
 		accountPage ap= new accountPage(driver);
 		Thread.sleep(20000);
 		js.executeScript("arguments[0].click();",ap.getOppsCont());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
+		waitForWebElementPresent(ap.getOppsNew());
 		js.executeScript("arguments[0].click();", ap.getOppsNew());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		createOppPage cop = new createOppPage(driver);
+		waitForWebElementPresent(cop.getOppName());		
 		cop.getOppName().sendKeys(opportunityname);
 		cop.getcurrency().sendKeys(currency);
 		Thread.sleep(5000);
@@ -124,9 +128,17 @@ public class createOpportunity extends Base {
 				+ "'])[2]")).click();
 		}
 		cop.getsave().click();
-		Thread.sleep(10000);
+		getsuccessmessage();
+//		Thread.sleep(10000);
 		driver.close();
 		
 		
+	}
+	public  void getsuccessmessage(){
+		WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+		waitForWebElementPresent(msg);
+		WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+		if(sm.getText().contains("success"))
+		System.out.println(msg.getText());
 	}
 }

@@ -1,6 +1,7 @@
 package Regression;
 
 import java.util.List;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -28,22 +29,29 @@ import Pageobjects.loginPageObject;
 import Pageobjects.oppPage;
 import Regression.Base;
 
-public class contractSubmitForSignature extends Base {
 
+
+
+public class contractSubmitForSignature extends Base {
+	public String type;
+	
 	@Test
-	public void contractSubmitForSignature() throws IOException, InterruptedException
+	public void SubmitForSignature() throws IOException, InterruptedException
 	{
 		
 		driver= initialiseDriver();
-		createContract cc=new createContract();
-		landingPage lp= new landingPage(driver);
 		contractPage c= new contractPage(driver);
+		oppPage op= new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		driver.get(contracturl);
 		Thread.sleep(15000);
+		type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
+		System.out.println(type);
+		if(type.equals("Service Order")){
 		js.executeScript("window.scrollBy(0,2700)", "");
 		Thread.sleep(3000);
 		Actions act = new Actions(driver);
+		
 		WebElement ele = driver.findElement(By.xpath("((//*[text() = 'Billing Contact'])//parent::div)//following-sibling::div/span[@class='test-id__field-value slds-form-element__static slds-grow ']"));
 		act.doubleClick(ele).perform();
 		Thread.sleep(5000);
@@ -56,7 +64,50 @@ public class contractSubmitForSignature extends Base {
 		driver.findElement(By.xpath("//*[text() = 'Save']")).click();
 		Thread.sleep(15000);
 		driver.navigate().refresh();
+		
 		Thread.sleep(15000);
+		
+		
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
+		Thread.sleep(10000);
+		if(sellinglane.equals("Communications")){
+			String acvtotal=op.getacvtotal().getText().substring(4);
+			String acvt=acvtotal.replace(",","");
+			Double at=Double.parseDouble(acvt);
+			if(at>=50000){
+				userprop();	
+			}
+			
+		}
+		else if(sellinglane.equals("Security")) 
+		{
+			String acvcommited=op.getacvcommitted().getText().substring(4);
+			String acv=acvcommited.replace(",","");
+			Double acvcc=Double.parseDouble(acv);
+			if(acvcc>=25000){	userprop();
+						}	
+				
+				
+			}
+			else{
+			String acvcommit=op.getacvcommitted().getText().substring(4);
+				String acvc=acvcommit.replace(",","");
+				Double ac=Double.parseDouble(acvc);
+				if(ac>=50000){	
+					userprop();
+			}
+		}
+		
+		}
+		
+		op.getSaveedit().click();
+		Thread.sleep(5000);
+		js.executeScript("window.scrollBy(0,1500)");
+		Thread.sleep(5000);
+		
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@class='container forceRelatedListSingleContainer']/article/div[2]/div/div/div/div//a")));
+		Thread.sleep(15000);
+		
 		c.Dropdown().click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
@@ -116,7 +167,7 @@ public class contractSubmitForSignature extends Base {
 		driver.navigate().refresh();
 		try {
 			
-			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission -- Security')]"));
+			List<WebElement> Cases_List = driver.findElements(By.xpath("//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission')]"));
 			int Cases_Count = Cases_List.size();
 			System.out.println("Number of Case records when Submit for Signature is done = " + Cases_Count);
 			if(Cases_Count == 1) {
@@ -142,6 +193,20 @@ public class contractSubmitForSignature extends Base {
 		
 	driver.close();
 	        
+		
+	}
+	public void userprop() throws InterruptedException{
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//button[@title='Edit Why Neustar Won']")));
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//label[contains(text(),'Why Neustar Won')]//following-sibling::div/textarea")).sendKeys("Test");
+		driver.findElement(By.xpath("//label[contains(text(),'How did Neustar Improve their Process')]//following-sibling::div/textarea")).sendKeys("Test");
+	    driver.findElement(By.xpath("//label[contains(text(),'Solution Description')]//following-sibling::div/textarea")).sendKeys("Test");
+		driver.findElement(By.xpath("//label[contains(text(),'Customer Current Process')]//following-sibling::div/textarea")).sendKeys("Test");
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//label[contains(text(),'Competitor')]//following-sibling::div//input")));
+		driver.findElement(By.xpath("//label[contains(text(),'Competitor')]//following-sibling::div//div/div[2]/lightning-base-combobox-item[@data-value='"+competitor+"']")).click();
+		if(competitor.equals("Other"))
+			driver.findElement(By.xpath("//label[contains(text(),'Competitor (If Other)')]//following-sibling::div/input")).sendKeys("Test");
 		
 	}
 }

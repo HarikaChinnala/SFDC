@@ -28,6 +28,8 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 public class activateContract extends Base {
+	
+	public String type;
 	//Attention required
 	@Test(priority=1)
 	public void attentionrequired () throws IOException, InterruptedException 
@@ -49,8 +51,9 @@ public class activateContract extends Base {
 								+ "']")).click();
 		//driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005Dg0AAE/view");
 		Thread.sleep(10000);
-	
-		((JavascriptExecutor)driver).executeScript("scroll(0,100);");
+	   type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
+		System.out.println(type);
+	   ((JavascriptExecutor)driver).executeScript("scroll(0,100);");
 		Thread.sleep(1000);
 		Actions action= new Actions(driver);
 		action.doubleClick(cp.getstatus()).build().perform();
@@ -96,7 +99,7 @@ public class activateContract extends Base {
 			js.executeScript("arguments[0].click();", cp.getAAdrop());
 			js.executeScript("arguments[0].click();", cp.geteditsave());
 			Thread.sleep(10000);
-			for(int m=0;m<=2;m++)
+			for(int m=0;m<=1;m++)
 	        {
 	        	driver.navigate().refresh();
 	        	Thread.sleep(10000);
@@ -130,7 +133,8 @@ public class activateContract extends Base {
 	        else 
 	        	System.out.println("Contract is not Activated");
 		  
-		  js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
+		  if(type.equals("Service Order")){
+	  js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
 		 Thread.sleep(10000);
 		
 		  String chev=driver.findElement(By.xpath("//*[@title='7 - Won']")).getAttribute("aria-selected");
@@ -139,7 +143,9 @@ public class activateContract extends Base {
 	        }
 	        else 
 	        	System.out.println("Opportunity is not moved to 7-won stage");
-			  driver.close();
+		  }
+		  Thread.sleep(3000);
+		  driver.close();
 		
 	}
 }

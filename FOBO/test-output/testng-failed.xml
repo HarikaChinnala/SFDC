@@ -5,9 +5,6 @@
     <classes>
       <class name="Regression.createQuoteandConfigure">
         <methods>
-          <include name="generatequoteproposal"/>
-          <include name="configureQuote"/>
-          <include name="createQuote"/>
           <include name="aftersuitemethod"/>
           <include name="approveQuote"/>
           <include name="afterclassmethod"/>

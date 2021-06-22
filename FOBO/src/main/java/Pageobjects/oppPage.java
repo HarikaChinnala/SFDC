@@ -83,6 +83,13 @@ public WebElement Files;
 @FindBy(xpath="//*[@name='SaveEdit']")
 public WebElement Saveedit;
 
+@FindBy(xpath="(//*[starts-with(text(),'Incremental ACV Committed')]//parent::div)/following-sibling::div//lightning-formatted-text")
+public WebElement acvcommitted;	
+
+@FindBy(xpath="(//*[starts-with(text(),'Incremental ACV Total')]//parent::div)/following-sibling::div//lightning-formatted-text")
+public WebElement acvtotal;
+
+
 public oppPage(WebDriver driver) {
 	// TODO Auto-generated constructor stub
 	//this.driver=driver;
@@ -192,6 +199,13 @@ public WebElement getagreementstat(){
 	
 	public WebElement get7won(){
 		return wonchev;
+}
+	
+	public WebElement getacvcommitted(){
+		return acvcommitted;
+}	
+	public WebElement getacvtotal(){
+		return acvtotal;
 }
 	
 }

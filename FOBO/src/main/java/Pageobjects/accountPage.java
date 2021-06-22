@@ -31,6 +31,12 @@ public class accountPage {
 	@FindBy(xpath="//*[@name='Edit']")
 	public WebElement edit;
 	
+	@FindBy(xpath="(((//*[@id='relatedListsTab__item'])/parent::li)//following-sibling::li)//button")
+	public WebElement more;
+	
+	@FindBy(xpath="//*[@role='menuitem']//*[contains(text(),'New Legal Document')]")
+	public WebElement legal;
+	
 	
 	public accountPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -67,6 +73,14 @@ public class accountPage {
 
 	public WebElement getedit(){
 		return edit;
+	}
+	
+	public WebElement getmore(){
+		return more;
+	}
+
+	public WebElement getlegal(){
+		return legal;
 	}
 
 

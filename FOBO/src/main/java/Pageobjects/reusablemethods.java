@@ -157,5 +157,14 @@ public class reusablemethods extends Base {
 	return ;
 		
 	}
+	@Test
+	public  WebDriver getsuccessmessage(WebDriver driver){
+		WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+		waitForWebElementPresent(msg);
+		WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+		if(sm.getText().contains("success"))
+		System.out.println(msg.getText());
+		return driver;
+	}
 	
 }

@@ -4,10 +4,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -29,44 +31,55 @@ public class createAccountandEdit extends Base {
 	public void createAccount() throws IOException, InterruptedException
 	{
 		driver= initialiseDriver();
-		Thread.sleep(2000);	
+		
 		landingPage lp= new landingPage(driver);
 		accountPage ap= new accountPage(driver);
-		
+		waitForWebElementPresent(lp.getAccount());
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", lp.getAccount());
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		
 		js.executeScript("arguments[0].click();", ap.getNewAccount());
 		ap.getAccountNamefield().sendKeys(NewAccountname);
 		ap.getwebsite().sendKeys(websitename);
 		ap.getsaveAccount().click();
-		Thread.sleep(10000);
+		getsuccessmessage();
+		Thread.sleep(5000);
 	driver.navigate().refresh();
+//	driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
 	}
 	@Test(priority=2)
 	public void editAccount() throws IOException, InterruptedException
 	{
-	Thread.sleep(5000);
+//	Thread.sleep(5000);
 	JavascriptExecutor js = (JavascriptExecutor)driver;
 	landingPage lp= new landingPage(driver);
 	accountPage ap= new accountPage(driver);
 	
 			js.executeScript("arguments[0].click();", lp.getAccount());
-			Thread.sleep(10000);
+			waitForWebElementPresent(driver.findElement(By.xpath("//*[@title='Account Name']")));
+//			Thread.sleep(10000);
 			//String existingaccount = prop.getProperty("existingaccountname");
 			driver.findElement(By.xpath("//*[text()='"
 									+ existingaccountname
 									+ "']")).click();
-	
+			waitForWebElementPresent(ap.getedit());
 			ap.getedit().click();
 			ap.getwebsite().clear();
 			ap.getwebsite().sendKeys(websitename);
-			Thread.sleep(3000);
+//			Thread.sleep(3000);
 			ap.getsaveAccount().click();
-			//driver.findElement(By.xpath("(//*[text()='Save'])[2]")).click();
+			getsuccessmessage();
 			Thread.sleep(5000);
 			driver.close();
 		
+	}
+	
+	public void getsuccessmessage(){
+		WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+		waitForWebElementPresent(msg);
+		WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+		if(sm.getText().contains("success"))
+		System.out.println(msg.getText());
 	}
 }

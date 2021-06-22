@@ -73,7 +73,7 @@ public class createQuoteandConfigure extends Base {
 				+ "']")).click();
 		
 		qp.getsave().click();
-		Thread.sleep(10000);
+		getsuccessmessage();
 		driver.navigate().refresh();
 		Thread.sleep(10000);
 	}
@@ -90,14 +90,15 @@ public class createQuoteandConfigure extends Base {
 		js.executeScript("arguments[0].click();", op.getquotelink());
 		Thread.sleep(20000);
 		//to be sent to data.property file
-		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
-		System.out.println("Quote created is:"+quote);
+//		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
+//		System.out.println("Quote created is:"+quote);
 	 
 		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);
 		// configured products
 		pc.productConfiguration(sellinglane, productname);
+//		getsuccessmessage();
         driver.navigate().refresh();
         Thread.sleep(10000);
 		}
@@ -134,15 +135,17 @@ public class createQuoteandConfigure extends Base {
         qp.getdropdown().click();
         Thread.sleep(5000);
         //qp.getsubmitapproval().click();
-        String url=driver.getCurrentUrl();
+//       String url=driver.getCurrentUrl();
         
-        if(url.contains("ltnstage")){
+ //       if(url.contains("ltnstage")){
+        try{
         js.executeScript("arguments[0].click();", qp.getsubmitapproval());
         Thread.sleep(10000);
         }
-        else
+        catch(Exception e){
         	js.executeScript("arguments[0].click();", qp.getsubmitapprovaluat());
         Thread.sleep(10000);
+        }
         String app = qp.getapproved().getAttribute("aria-selected");
         System.out.println(app);
         if (app.equals("true")){
@@ -150,7 +153,15 @@ public class createQuoteandConfigure extends Base {
         }
         else 
         	System.out.println("Quote is not approved");
+//        getsuccessmessage();
       driver.close();
         }
+		public  void getsuccessmessage(){
+			WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+			waitForWebElementPresent(msg);
+			WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+			if(sm.getText().contains("success"))
+			System.out.println(msg.getText());
+		}
 	
 }
