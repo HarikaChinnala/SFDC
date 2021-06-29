@@ -38,7 +38,6 @@ public class activateContract extends Base {
 		landingPage lp= new landingPage(driver);
 		contractPage cp= new contractPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		createContract cc=new createContract();
 		js.executeScript("arguments[0].click();", lp.getcontracts());
 		Thread.sleep(5000);
 		lp.getcontracttxtbox().sendKeys(contractid);

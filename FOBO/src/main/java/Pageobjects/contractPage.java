@@ -55,6 +55,10 @@ public WebElement  ARchev;
 @FindBy(xpath="//*[@title='Awaiting Activation']")
 public WebElement  AAchev;
 
+@FindBy(xpath="//*[@title='Terminated']")
+public WebElement  Termchev;
+
+
 @FindBy(xpath="(//*[@title='Attention Required'])[2]")
 public WebElement  ARdrop;
 
@@ -93,6 +97,12 @@ public WebElement Chevron_Draft;
 @FindBy(xpath="//*[@class='uiMenu']/div/div/div/a[@class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']")
 public WebElement Dropdown;
 
+@FindBy(xpath="//*[@title ='Terminate Contract'] //*[@role='button']")
+public WebElement Terminatecon;
+
+@FindBy(xpath="//*[@title ='Terminate Subscription']")
+public WebElement Terminatesub;
+
 @FindBy(xpath="//*[@title = 'Submit Edit'] //*[@role='button']")
 public WebElement SubmitEdit;
 
@@ -116,6 +126,10 @@ public WebElement Related_Tab;
 
 @FindBy(xpath="//*[text()='Cases']")//*[@title='Cases']//parent::a
 public WebElement Cases_Section;
+
+
+@FindBy(xpath="//*[text()='Subscriptions']")
+public WebElement Subscriptions;
 
 
 //@FindBy(xpath="//table[@role='grid']/tbody/tr/th/span/a")
@@ -239,7 +253,12 @@ public WebElement getFiles(){
 	
 	public WebElement getAAchev(){
 		return AAchev;
-}
+	}
+		
+		public WebElement getTermchev(){
+			return Termchev;
+	}
+
 	public WebElement getActivate(){
 		return Activate;
 }
@@ -266,12 +285,27 @@ public WebElement getFiles(){
 		return Dropdown;
 	}
 	
+	
+	
+	public WebElement getTerminatecon(){
+		return Terminatecon;
+	}
+	
 	public WebElement SubmitEdit(){
 		return SubmitEdit;
 	}
 	
+	public WebElement getTerminatesub(){
+		return Terminatesub;
+	}
+	
+	
 	public WebElement SubmitEditDetails(){
 		return SubmitEditDetails;
+	}
+	
+	public WebElement getsubscriptions(){
+		return Subscriptions;
 	}
 	
 	public WebElement Submit_SubmitEdit(){

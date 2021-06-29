@@ -84,6 +84,10 @@ public class Base {
 	protected String legalentity;
 	protected String countercontact;
 	protected String competitor;
+	protected String terminationcomments;
+	protected String cancdate;
+	protected String subid;
+	
 
 	public	Properties prop = new Properties();
 	
@@ -116,11 +120,12 @@ public class Base {
     	}
     
     	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+ //   	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+    	driver.manage().deleteAllCookies();
     	driver.manage().window().maximize();
     	driver.get(prop.getProperty("url"));
 		loginPageObject l = new loginPageObject(driver);
-		l.getusername().sendKeys(prop.getProperty("username"));
+		l.getusername().sendKeys(prop.getProperty("usernameadmin"));
 		l.getpassword().sendKeys(prop.getProperty("pwd"));
 		l.getLogin().click();
 		try {
@@ -186,6 +191,9 @@ public class Base {
 		legalentity=prop.getProperty("legalentity");
 		countercontact=prop.getProperty("countercontact");
 		competitor=prop.getProperty("competitor");
+		terminationcomments=prop.getProperty("terminationcomments");
+		cancdate=prop.getProperty("cancdate");
+		subid=prop.getProperty("subid");
 		//FileOutputStream fout = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
 		
 		return driver;

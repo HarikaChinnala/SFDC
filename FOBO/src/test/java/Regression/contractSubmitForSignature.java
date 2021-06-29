@@ -66,8 +66,19 @@ public class contractSubmitForSignature extends Base {
 		driver.navigate().refresh();
 		
 		Thread.sleep(15000);
-		
-		
+		c.Dropdown().click();
+		Thread.sleep(5000);
+		js.executeScript("arguments[0].click();", c.SubmitForSignature());
+		Thread.sleep(5000);
+		try{
+			WebElement subsignpop=driver.findElement(By.xpath("//*[@class='modal-body scrollable slds-modal__content slds-p-around--medium']"));	
+		if(subsignpop.isDisplayed()){
+			
+		}
+		}
+		catch(Exception e){
+		System.out.println(driver.findElement(By.xpath("//*[@class='slds-align-middle slds-hyphenate']")).getText());
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//button[@title='Close']")));
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
 		Thread.sleep(10000);
 		if(sellinglane.equals("Communications")){
@@ -98,16 +109,8 @@ public class contractSubmitForSignature extends Base {
 			}
 		}
 		
-		}
-		
-		op.getSaveedit().click();
-		Thread.sleep(5000);
-		js.executeScript("window.scrollBy(0,1500)");
-		Thread.sleep(5000);
-		
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@class='container forceRelatedListSingleContainer']/article/div[2]/div/div/div/div//a")));
 		Thread.sleep(15000);
-		
 		c.Dropdown().click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
@@ -115,6 +118,19 @@ public class contractSubmitForSignature extends Base {
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(10000);
+		
+		}
+		}
+		
+		else{
+		c.Dropdown().click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		js.executeScript("arguments[0].click();", c.SubmitForSignature());
+		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+		}
 		//driver.findElement(By.xpath("(//*[@class='select'])[1]")).click()0		
 		driver.findElement(By.xpath("//div[@id='parent_Signature_Tool__c2']/div/div")).click();
 		driver.findElement(By.xpath("//*[@title='Neustar Adobe Signature']")).click();
@@ -140,7 +156,7 @@ public class contractSubmitForSignature extends Base {
 			}
 		}
 		
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		//To Check the status of the Chevron
 		if(c.Chevron_SubmissionUnderReview().getAttribute("class").contains("active"))
 		{
@@ -197,6 +213,7 @@ public class contractSubmitForSignature extends Base {
 	}
 	public void userprop() throws InterruptedException{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		oppPage op= new oppPage(driver);
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//button[@title='Edit Why Neustar Won']")));
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//label[contains(text(),'Why Neustar Won')]//following-sibling::div/textarea")).sendKeys("Test");
@@ -207,6 +224,7 @@ public class contractSubmitForSignature extends Base {
 		driver.findElement(By.xpath("//label[contains(text(),'Competitor')]//following-sibling::div//div/div[2]/lightning-base-combobox-item[@data-value='"+competitor+"']")).click();
 		if(competitor.equals("Other"))
 			driver.findElement(By.xpath("//label[contains(text(),'Competitor (If Other)')]//following-sibling::div/input")).sendKeys("Test");
-		
+		op.getSaveedit().click();
+		Thread.sleep(10000);
 	}
 }
