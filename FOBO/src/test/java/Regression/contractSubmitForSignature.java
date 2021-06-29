@@ -42,11 +42,11 @@ public class contractSubmitForSignature extends Base {
 		oppPage op= new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		driver.get(contracturl);
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 		type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
 		System.out.println(type);
 		if(type.equals("Service Order")){
-		js.executeScript("window.scrollBy(0,2700)", "");
+			/*		js.executeScript("window.scrollBy(0,2700)", "");
 		Thread.sleep(3000);
 		Actions act = new Actions(driver);
 		
@@ -62,8 +62,8 @@ public class contractSubmitForSignature extends Base {
 		driver.findElement(By.xpath("//*[text() = 'Save']")).click();
 		Thread.sleep(15000);
 		driver.navigate().refresh();
-		
-		Thread.sleep(15000);
+*/		
+	//	Thread.sleep(15000);
 		c.Dropdown().click();
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();", c.SubmitForSignature());
