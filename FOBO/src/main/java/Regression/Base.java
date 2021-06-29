@@ -95,7 +95,7 @@ public class Base {
 	public WebDriver initialiseDriver() throws IOException, InterruptedException
 	{
 	
-		FileInputStream fis = new FileInputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
+		FileInputStream fis = new FileInputStream("src/main/java/Regression/data.properties");
 		prop.load(fis);
 		
     	String browserName = prop.getProperty("browser");

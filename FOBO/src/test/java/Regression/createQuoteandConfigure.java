@@ -146,13 +146,16 @@ public class createQuoteandConfigure extends Base {
         	js.executeScript("arguments[0].click();", qp.getsubmitapprovaluat());
         Thread.sleep(10000);
         }
+        Thread.sleep(10000);
         String app = qp.getapproved().getAttribute("aria-selected");
         System.out.println(app);
         if (app.equals("true")){
         	System.out.println("Quote is approved");
         }
-        else 
+        else {
         	System.out.println("Quote is not approved");
+        Assert.assertTrue(false);
+        }
 //        getsuccessmessage();
       driver.close();
         }

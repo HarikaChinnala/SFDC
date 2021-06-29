@@ -96,8 +96,7 @@ public class createContract extends Base {
 	        System.out.println("Contracturl is:"+curl);
 	        prop.setProperty("contractid", id);
 	        prop.setProperty("contracturl", curl);
-			try (final OutputStream outputstream = new FileOutputStream(
-					"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+			try (final OutputStream outputstream = new FileOutputStream("src/main/java/Regression/data.properties");) {
 				prop.store(outputstream, "File Updated");
 				outputstream.close();
 			}

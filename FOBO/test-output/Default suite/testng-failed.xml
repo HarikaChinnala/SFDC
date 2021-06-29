@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Regression.contractTermination">
+      <class name="Regression.createOpportunity">
         <methods>
-          <include name="Termination"/>
           <include name="aftersuitemethod"/>
           <include name="afterclassmethod"/>
+          <include name="createOpportunity"/>
         </methods>
-      </class> <!-- Regression.contractTermination -->
+      </class> <!-- Regression.createOpportunity -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

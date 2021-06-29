@@ -175,7 +175,7 @@ public class LoginPage extends Base {
 		System.out.println("Quote created is:" + quote);
 		prop.setProperty("existquote", quote);
 		try (final OutputStream outputstream = new FileOutputStream(
-				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+				"src/main/java/Regression/data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}
@@ -361,7 +361,7 @@ public class LoginPage extends Base {
 		prop.setProperty("contractid", contractid);
 		prop.setProperty("contracturl", curl);
 		try (final OutputStream outputstream = new FileOutputStream(
-				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+				"src/main/java/Regression/data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}
@@ -1313,7 +1313,7 @@ public class LoginPage extends Base {
 		System.out.println("Amendment Opportunity url:" + amendurl);
 		prop.setProperty("amendurl", amendurl);
 		try (final OutputStream outputstream = new FileOutputStream(
-				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+				"src/main/java/Regression/data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}

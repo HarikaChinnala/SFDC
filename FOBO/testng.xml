@@ -9,6 +9,7 @@
       <class name="Regression.createOpportunity"/> 
       <class name="Regression.createQuoteandConfigure"/>
       <class name="Regression.createContract"/>
+      <class name="Regression.winFlash_Opportunity"/>
       <class name="Regression.contractSubmitEdit"/>
       <class name="Regression.eSignature"/>
       <class name="Regression.contractSubmitForSignature"/>     

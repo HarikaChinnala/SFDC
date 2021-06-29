@@ -260,8 +260,7 @@ public class createAmendmentOpportunity extends Base {
 		String amendurl=driver.getCurrentUrl();
 		System.out.println("Amendment Opportunity url:"+amendurl);
 		prop.setProperty("amendurl", amendurl);
-		try (final OutputStream outputstream = new FileOutputStream(
-				"C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");) {
+		try (final OutputStream outputstream = new FileOutputStream("src/main/java/Regression/data.properties");) {
 			prop.store(outputstream, "File Updated");
 			outputstream.close();
 		}
