@@ -614,17 +614,332 @@ public class productConfiguration extends Base {
 		}
 		else if (sellinglane.equals("Communications")){
 			//communication products
+	/*1*/	if(productname.equals("Branded Call Display")) {
+				
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='Platform Fee']//sb-group[@id='selection']")).click();
+				
+			}
+			
+	/*2*/	else if(productname.equals("Branded Call Display and Caller Name Optimization Combo")) {
+				
+				//Configure Branded Call Display
+				driver.findElement(By.xpath("//*[@name='Branded Call Display']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='Platform Fee']//sb-group[@id='selection']")).click();
+				
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				
+				Thread.sleep(10000);
+				
+				//Configure Caller Name Optimization
+				driver.findElement(By.xpath("//*[@name='Caller Name Optimization']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				
+				Thread.sleep(10000);
+				
+			}
+			
+	/*3*/	else if(productname.equals("CNO/BCD/ECC Combo")) {
+				
+				//Configure Caller Name Optimization
+				driver.findElement(By.xpath("//*[@name='Caller Name Optimization']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+				//Configure Branded Call Display
+				driver.findElement(By.xpath("//*[@name='Branded Call Display']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='Platform Fee']//sb-group[@id='selection']")).click();
+				
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+				//Configure Enterprise Certified Caller
+				driver.findElement(By.xpath("//*[@name='Enterprise Certified Caller']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+			}
+			
+	/*4*/	else if(productname.equals("Caller ID (CNAM)")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@id='radioContainer'][1]")).click();
+				driver.findElement(By.xpath("//*[@name='Storage and Delivery']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='Access Fee (Monthly Minimum)']//sb-group[@id='selection']")).click();
+				
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+			}
+			
+	/*5*/	else if(productname.equals("Caller Name Optimization")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+			}
+			
+	/*6*/	else if(productname.equals("Certified Caller")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@name='Standalone (Premises) - Perpetual']//sb-group[@id='selection']")).click();
+				
+			}
+			
+	/*7*/	else if(productname.equals("Communications Professional Services")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
 
+				driver.findElement(By.xpath("//*[@name='e911 Audit']//sb-group[@id='selection']")).click();
+				
+			}
+			
+	/*8*/	else if(productname.equals("Directory Listings")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='Directory Listings - Band 1']//sb-group[@id='selection']")).click();
+		
+			}
+			
+	/*9*/	else if(productname.equals("Enterprise Certified Caller")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+
+			}
+			
+	/*10*/	else if(productname.equals("Global Numbering Intelligence Services (GNIS)")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+			}
+			
+	/*11*/	else if(productname.equals("Hosted OMS")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+				driver.findElement(By.xpath("//*[@name='ESR Commercial']//sb-group[@id='selection']")).click();
+				driver.findElement(By.xpath("//*[@name='ESR Commercial']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				driver.findElement(By.xpath("//*[@name='Per Trading Partner Configuration']//sb-group[@id='selection']")).click();
+				
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+			}
+			
+	/*12*/	else if(productname.equals("Licensed OMS")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@name='NumeriTrack']//sb-group[@id='selection']")).click();
+
+			}
+			
+	/*13*/	else if(productname.equals("Localeze")) {
+		
+				driver.findElement(By.xpath("//*[@name='Business Registry Manager Service (BRM) - Monthly']//div[@id='radioContainer']")).click();
+				driver.findElement(By.xpath("//*[@name='Business Registry Manager Service (BRM) - Monthly']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+		
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@label='Monthly Minimum Listing Volume #']//input[@type='text']")).sendKeys("1");
+				driver.findElement(By.xpath("//*[@label='Monthly Minimum Fee $']//input[@type='text']")).sendKeys("1");
+		
+		
+				driver.findElement(By.xpath("//*[@name='Monthly Minimum Listings Commitment']//sb-group[@id='selection']")).click();
+		
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+		
+			}
+			
+	/*14*/	else if(productname.equals("Neustar Certificate Manager")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@name='Certificate Authority']//sb-group[@id='selection']")).click();
+		
+			}
+			
+	/*15*/	else if(productname.equals("Pathfinder")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@name='Setup Fee']//sb-group[@id='selection']")).click();
+				driver.findElement(By.xpath("//*[@id='radioContainer'][1]")).click();
+				driver.findElement(By.xpath("//*[@name='Country Transaction - Onboard US']//sb-group[@id='selection']")).click();
+		
+			}
+			
+	/*16*/	else if(productname.equals("PortPS")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+
+				driver.findElement(By.xpath("//*[@name='Query Manager']//sb-group[@id='selection']")).click();
+				driver.findElement(By.xpath("//*[@name='Query Manager']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				driver.findElement(By.xpath("//*[@label='Customers TN Ownership (Millions)']//input[@type='text']")).sendKeys("1");
+				driver.findElement(By.xpath("//*[@label='Max Seats']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='5']")).click();
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+				
+			}
+			
+	/*17*/	else if(productname.equals("PortPS RIMS")) {
+				driver.findElement(By.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Threshold with Overages']")).click();
+		
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+
+				driver.findElement(By.xpath("//*[@name='RIMS - API Only']//sb-group[@id='selection']")).click();
+
+			}
+			
+	/*18*/	else if(productname.equals("Robocall Mitigation")) {
+				js.executeScript("arguments[0].value='5';", driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
+		
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+			}
+			
+	/*19*/	else if(productname.equals("SIP-IX")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+				driver.findElement(By.xpath("//*[@id='radioContainer'][1]")).click();
+				driver.findElement(By.xpath("//*[@name='SIP-IX Subscribe Interface - Contract One']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
+				driver.findElement(By.xpath("//*[@id='radioContainer'][1]")).click();
+				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+				Thread.sleep(10000);
+		
+			}
+			
+	/*20  -	else if(productname.equals("System Admin Guides")) {
+			}*/
+		
+	/*21*/	else if(productname.equals("Trusted Call Vetting")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				driver.findElement(By.xpath("//*[@name='Enterprise Vetting']//sb-group[@id='selection']")).click();
+		
+			}
 			
 			}
 		else if (sellinglane.equals("Security")){
 			//Security products
-		}
-
+	/*1*/	if(productname.equals("DNS Audit")) {
+				
+				driver.findElement(By.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Threshold with Overages']")).click();
+				
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+			}
+			
+	/*2*/	else if(productname.equals("InfoBlox")) {
+				
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly PreBill']")).click();
+				
+			}
+			
+	/*3*/	else if(productname.equals("IP Intelligence")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+		
+			}
+			
+	/*4*/	else if(productname.equals("Security Professional Services")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='One-time PreBill']")).click();
+				
+			}
+			
+	/*5*/	else if(productname.equals("Threat Feeds")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly PreBill']")).click();
+		
+			}
+			
+	/*6*/	else if(productname.equals("UltraDDoS Protect")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly PreBill']")).click();
+				
+			}
+			
+	/*7*/	else if(productname.equals("UltraDNS")) {
+				Thread.sleep(5000);
+//				driver.findElement(By.xpath("//div[@class='tab-content style-scope paper-tab'][text()='Dedicated Resolvers']")).click();
+//				driver.findElement(By.xpath("//*[@id='radioContainer']")).click();
+				
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
 	
+			}
+			
+	/*8*/	else if(productname.equals("UltraDNS Firewall")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly PreBill']")).click();
+				
+			}
+			
+	/*9*/	else if(productname.equals("Valimail")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly PreBill']")).click();
 
-	Thread.sleep(3000);driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
-
+			}
+			
+	/*10*/	else if(productname.equals("Web Performance Monitoring")) {
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
+				
+			}
+			
+	/*11*/	else if(productname.equals("Webmetrics")) {
+				driver.findElement(By.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Threshold with Overages']")).click();
+		
+				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
+				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Annual PreBill']")).click();
+				
+			}
+		}
+		
+	if(!productname.equals("System Admin Guides")) {
+		Thread.sleep(3000);driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();
+	}
+	if(productname.equalsIgnoreCase("UltraDNS Firewall")) {
+		driver.findElement(By.xpath("//*[text()='Continue']")).click();
+	}
+	
 	Thread.sleep(5000);
 
 	js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@name='Quick Save']/paper-button")));Thread.sleep(30000);
