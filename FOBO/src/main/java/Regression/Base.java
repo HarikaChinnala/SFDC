@@ -105,13 +105,13 @@ public class Base {
     		ChromeOptions opt = new ChromeOptions();
     		opt.addArguments("--disable-notifications");
     		opt.addArguments("--disable-web-security");
-    		System.setProperty("webdriver.chrome.driver", "C://Users//966790//chromedriver//chromedriver.exe");
+    		System.setProperty("webdriver.chrome.driver", "C://chromedriver//chromedriver.exe");
     		driver = new ChromeDriver(opt);
     		
     	}
     	else if (browserName.equals("firefox"))
     	{
-    		System.setProperty("webdriver.gecko.driver","C://Users//966790//geckodriver.exe");
+    		System.setProperty("webdriver.gecko.driver","C://geckodriver.exe");
     		driver = new FirefoxDriver();
     	}
     	else if (browserName.equals("IE"))
