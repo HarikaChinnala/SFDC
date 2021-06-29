@@ -30,8 +30,6 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 
-
-
 public class contractSubmitForSignature extends Base {
 	public String type;
 	

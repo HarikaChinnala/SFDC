@@ -120,6 +120,7 @@ public class contractTermination extends Base {
 						System.out.println("Contract is not terminated");
 					Assert.assertTrue(false);
 				}
+					
 					}
 					else
 						System.out.println("Contract will be future terminated");

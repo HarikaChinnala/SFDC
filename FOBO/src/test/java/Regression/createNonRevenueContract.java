@@ -27,7 +27,7 @@ import Pageobjects.loginPageObject;
 import Regression.Base;
 
 public class createNonRevenueContract extends Base {
-	
+
 	@Test
 	public void  createNonRevenueContract() throws IOException, InterruptedException
 	{

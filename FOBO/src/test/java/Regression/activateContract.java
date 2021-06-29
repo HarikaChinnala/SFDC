@@ -28,7 +28,7 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 public class activateContract extends Base {
-	
+
 	public String type;
 	//Attention required
 	@Test(priority=1)

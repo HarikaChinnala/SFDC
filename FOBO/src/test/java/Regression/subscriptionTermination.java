@@ -154,7 +154,7 @@ public class subscriptionTermination extends Base {
 						System.out.println("TCV commited: "+ACTtc);
 						System.out.println("TCV Total: "+ACTtt);
 //					String subtermdate= driver.findElement(By.xpath("(//td/span/span[@class='slds-truncate uiOutputDate'])[3]")).getText();
-
+ 
 						float diff= daysdiff();
 						System.out.println("Diff from current date: "+diff);
 						if(diff<=0){

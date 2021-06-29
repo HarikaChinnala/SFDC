@@ -30,8 +30,6 @@ import Pageobjects.oppPage;
 import Regression.Base;
 
 public class createContract extends Base {
-//public String contracturl;
-//public String contractid;
 	@Test
 	public void createContract () throws IOException, InterruptedException
 	{
