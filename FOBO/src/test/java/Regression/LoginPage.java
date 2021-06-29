@@ -30,7 +30,6 @@ public class LoginPage extends Base {
 	
 	  public String curl; public String contractid; public String amendurl;
 
-
 	@Test(priority = 1)
 	public void createOpp() throws IOException, InterruptedException {
 
