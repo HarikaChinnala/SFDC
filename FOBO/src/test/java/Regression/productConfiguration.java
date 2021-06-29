@@ -896,9 +896,13 @@ public class productConfiguration extends Base {
 			}
 			
 	/*7*/	else if(productname.equals("UltraDNS")) {
+				Thread.sleep(5000);
+//				driver.findElement(By.xpath("//div[@class='tab-content style-scope paper-tab'][text()='Dedicated Resolvers']")).click();
+//				driver.findElement(By.xpath("//*[@id='radioContainer']")).click();
+				
 				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
 				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
-				
+	
 			}
 			
 	/*8*/	else if(productname.equals("UltraDNS Firewall")) {
