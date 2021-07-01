@@ -74,8 +74,8 @@ public class winFlash_Opportunity extends Base {
 
  
 
-        driver.navigate().refresh();
-        Thread.sleep(20000);
+//        driver.navigate().refresh();
+//        Thread.sleep(20000);
 
  
 
@@ -127,6 +127,7 @@ public class winFlash_Opportunity extends Base {
             driver.findElement(By.xpath("//*[@class='slds-form-element']/div/textarea")).sendKeys("eSignature");
             Thread.sleep(5000);
             driver.findElement(By.xpath("//*[@type='submit']")).click();
+            Thread.sleep(2000);
             String ErrorMsg_1 = /*
                                  * driver.findElement(By.
                                  * xpath("//div[@class='toastTitle slds-text-heading--small']")) .getText() +
