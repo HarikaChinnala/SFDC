@@ -265,7 +265,6 @@ public class createAmendmentOpportunity extends Base {
 			outputstream.close();
 		}
 		
-		
 driver.navigate().refresh();
 //		driver.get(amendurl);
 		Thread.sleep(15000);
