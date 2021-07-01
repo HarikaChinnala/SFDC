@@ -74,26 +74,27 @@ public class createQuoteandConfigure extends Base {
 		
 		qp.getsave().click();
 		getsuccessmessage();
+		String quote = driver.findElement(By.xpath("//*[@title='Edit Primary Quote']/preceding-sibling::span//div/a")).getText();		
+		prop.setProperty("quote", quote);
+		try (final OutputStream outputstream = new FileOutputStream("src/main/java/Regression/data.properties");) {
+			prop.store(outputstream, "File Updated");
+			outputstream.close();
+		}
 		driver.navigate().refresh();
 		Thread.sleep(10000);
 	}
 		@Test(priority=2)
 		public void configureQuote() throws IOException, InterruptedException
 		{
-			
+//			driver= initialiseDriver();
 			oppPage op= new oppPage(driver);
 			productConfiguration pc= new productConfiguration(driver);
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", op.getDetail());
-		Thread.sleep(30000);
+		Thread.sleep(10000);
 		//driver.findElement(By.xpath("(//*[contains(text(),'Primary Quote')]/parent::div)/following-sibling::div[1]/span/slot/slot/force-lookup/div/force-hoverable-link/div/a/span[@id='window']")).click();
 		js.executeScript("arguments[0].click();", op.getquotelink());
 		Thread.sleep(20000);
-		//to be sent to data.property file
-//		String quote = driver.findElement(By.xpath("//*[contains(text(),'Quote Number')]/following-sibling::p/slot/lightning-formatted-text")).getText();
-//		System.out.println("Quote created is:"+quote);
-	 
-		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", op.geteditlines());
 		Thread.sleep(30000);
 		// configured products
@@ -125,6 +126,8 @@ public class createQuoteandConfigure extends Base {
         System.out.println("File is attached");
         else
         	System.out.println("File is not attached");
+        driver.navigate().refresh();
+        Thread.sleep(15000);
 		}
 		@Test(priority=4)
 		public void approveQuote() throws IOException, InterruptedException
@@ -159,6 +162,7 @@ public class createQuoteandConfigure extends Base {
 //        getsuccessmessage();
       driver.close();
         }
+		
 		public  void getsuccessmessage(){
 			WebElement msg= driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
 			waitForWebElementPresent(msg);

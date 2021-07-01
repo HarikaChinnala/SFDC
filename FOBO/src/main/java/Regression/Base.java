@@ -69,7 +69,7 @@ public class Base {
 	protected String entity;
 	protected String primarycontact;
 	protected String foundbychannel;
-	protected String existquote;
+	protected String quote;
 	protected String RNperiod;
 //	protected String OppName;
 	protected String amendurl;
@@ -125,7 +125,7 @@ public class Base {
     	driver.manage().window().maximize();
     	driver.get(prop.getProperty("url"));
 		loginPageObject l = new loginPageObject(driver);
-		l.getusername().sendKeys(prop.getProperty("usernameadmin"));
+		l.getusername().sendKeys(prop.getProperty("username"));
 		l.getpassword().sendKeys(prop.getProperty("pwd"));
 		l.getLogin().click();
 		try {
@@ -176,7 +176,7 @@ public class Base {
 		entity=prop.getProperty("entity");
 		primarycontact=prop.getProperty("primarycontact");
 		foundbychannel=prop.getProperty("foundbychannel");
-		existquote=prop.getProperty("existquote");
+		quote=prop.getProperty("quote");
 		RNperiod=prop.getProperty("RNperiod");
 //		OppName=prop.getProperty("OppName");
 		amendurl=prop.getProperty("amendurl");

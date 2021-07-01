@@ -83,6 +83,9 @@ public WebElement Files;
 @FindBy(xpath="//*[@name='SaveEdit']")
 public WebElement Saveedit;
 
+@FindBy(xpath="//*[@name='Opportunity.Contract_Sync']")
+public WebElement contractSync;
+
 @FindBy(xpath="(//*[starts-with(text(),'Incremental ACV Committed')]//parent::div)/following-sibling::div//lightning-formatted-text")
 public WebElement acvcommitted;	
 
@@ -208,4 +211,8 @@ public WebElement getagreementstat(){
 		return acvtotal;
 }
 	
+	
+	public WebElement getcontractSync(){
+		return contractSync;
+}
 }

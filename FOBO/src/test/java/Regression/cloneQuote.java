@@ -38,13 +38,13 @@ public class cloneQuote extends Base {
 		System.out.println(existquote);*/
 		js.executeScript("arguments[0].click();", lp.getQuote());
 		Thread.sleep(5000);
-		lp.getquotetxtbox().sendKeys(existquote);
+		lp.getquotetxtbox().sendKeys(quote);
 		lp.getquotetxtbox().sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 		//lp.getsrchresult().click();
 		//String existquote = cqc.configureQuote().existquote;
 		driver.findElement(By.xpath("//*[@title='"
-								+ existquote
+								+ quote
 								+ "']")).click();
 		Thread.sleep(10000);
 		

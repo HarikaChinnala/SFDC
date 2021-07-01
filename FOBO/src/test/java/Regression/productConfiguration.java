@@ -55,7 +55,7 @@ public class productConfiguration extends Base {
 				driver.switchTo().defaultContent();
 			}
 		}
-
+		Thread.sleep(5000);
 		if (sellinglane.equals("Risk")){
 			driver.findElement(By.xpath("//*[@id='items']/sb-table-row[3]")).click();
 			}
@@ -99,8 +99,7 @@ public class productConfiguration extends Base {
 		Thread.sleep(10000);
 		if (sellinglane.equals("Risk")){
 		if (productname.equals("Contact Compliance Risk")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -117,8 +116,7 @@ public class productConfiguration extends Base {
 			driver.findElement(By.xpath("//*[@name='Change Notification Platform']//sb-group[@id='selection']"))
 					.click();
 		} else if (productname.equals("Contact Tracing Solutions")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -135,8 +133,7 @@ public class productConfiguration extends Base {
 					.click();
 
 		} else if (productname.equals("Digital Identity Risk Flex")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -153,8 +150,7 @@ public class productConfiguration extends Base {
 					.click();
 
 		} else if (productname.equals("Digital Identity Risk Pro")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -169,8 +165,7 @@ public class productConfiguration extends Base {
 					.click();
 			driver.findElement(By.xpath("//*[@name='Email Attributes']//sb-group[@id='selection']")).click();
 		} else if (productname.equals("Domestic Phone Takeover Risk")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -185,8 +180,7 @@ public class productConfiguration extends Base {
 					.click();
 			driver.findElement(By.xpath("//*[@name='Call Forwarding']//sb-group[@id='selection']")).click();
 		} else if (productname.equals("EveryoneAPI")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -201,8 +195,7 @@ public class productConfiguration extends Base {
 					.click();
 			driver.findElement(By.xpath("//*[@name='Address Attributes']//sb-group[@id='selection']")).click();
 		} else if (productname.equals("Inbound Authentication")) {
-			driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-					.sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By
 					.xpath("//*[@label='Billing Option']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
@@ -216,7 +209,7 @@ public class productConfiguration extends Base {
 			driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']"))
 					.click();
 
-			driver.findElement(By.xpath("//*[@label='ACV Usage']/div/div/sb-field/span/div/sb-input")).sendKeys("5");
+			js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='ACV Usage']/div/div/sb-field/span/div/sb-input")));
 
 			driver.findElement(By.xpath("//*[@name='Setup Fee']//sb-group[@id='selection']")).click();
 		} else if (productname.equals("Initial Account Database Processing - Authentication")) {
@@ -460,8 +453,7 @@ public class productConfiguration extends Base {
 				.click();
 		Thread.sleep(10000);
 
-		driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input"))
-				.sendKeys("5");
+		js.executeScript("arguments[0].value='5';",driver.findElement(By.xpath("//*[@label='Scope of Records (Millions)']/div/div/sb-field/span/div/sb-input")));
 		driver.findElement(By
 				.xpath("//*[@label='Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']"))
 				.click();
@@ -767,8 +759,8 @@ public class productConfiguration extends Base {
 				driver.findElement(By.xpath("//*[@label='Billing Frequency']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
 				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='Monthly Arrears']")).click();
 		
-				driver.findElement(By.xpath("//*[@label='Monthly Minimum Listing Volume #']//input[@type='text']")).sendKeys("1");
-				driver.findElement(By.xpath("//*[@label='Monthly Minimum Fee $']//input[@type='text']")).sendKeys("1");
+				js.executeScript("arguments[0].value='1';",driver.findElement(By.xpath("//*[@label='Monthly Minimum Listing Volume #']//input[@type='text']")));
+				js.executeScript("arguments[0].value='1';",driver.findElement(By.xpath("//*[@label='Monthly Minimum Fee $']//input[@type='text']")));
 		
 		
 				driver.findElement(By.xpath("//*[@name='Monthly Minimum Listings Commitment']//sb-group[@id='selection']")).click();
@@ -802,7 +794,7 @@ public class productConfiguration extends Base {
 
 				driver.findElement(By.xpath("//*[@name='Query Manager']//sb-group[@id='selection']")).click();
 				driver.findElement(By.xpath("//*[@name='Query Manager']//span[@class='td sb-action-icon sf-icon-custom_apps   --desktop  style-scope sb-actions']")).click();
-				driver.findElement(By.xpath("//*[@label='Customers TN Ownership (Millions)']//input[@type='text']")).sendKeys("1");
+				js.executeScript("arguments[0].value='1';",driver.findElement(By.xpath("//*[@label='Customers TN Ownership (Millions)']//input[@type='text']")));
 				driver.findElement(By.xpath("//*[@label='Max Seats']/div/div/sb-field/span/div/sb-select/select[@class='myselect style-scope sb-select --desktop']")).click();
 				driver.findElement(By.xpath("//option[@class='sbOption style-scope sb-select'][@title='5']")).click();
 				driver.findElement(By.xpath("//*[@class='style-scope sb-product-config'][text()='Save']")).click();

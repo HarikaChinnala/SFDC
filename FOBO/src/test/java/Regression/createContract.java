@@ -37,9 +37,7 @@ public class createContract extends Base {
 		driver= initialiseDriver();
 		landingPage lp= new landingPage(driver);
 		contractPage cp= new contractPage(driver);
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		//driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005DmXAAU/view");
-		js.executeScript("arguments[0].click();", lp.getOpportunities());
+		JavascriptExecutor js = (JavascriptExecutor)driver;	js.executeScript("arguments[0].click();", lp.getOpportunities());
 		Thread.sleep(5000);
 		lp.getopptxtbox().sendKeys(opportunityname);
 		lp.getopptxtbox().sendKeys(Keys.ENTER);
