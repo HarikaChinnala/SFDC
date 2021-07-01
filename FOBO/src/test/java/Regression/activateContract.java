@@ -48,8 +48,7 @@ public class activateContract extends Base {
 		driver.findElement(By.xpath("//*[@title='"
 								+ contractid
 								+ "']")).click();
-		//driver.get("https://neustar--ltnstage.lightning.force.com/lightning/r/Contract/8006s0000005Dg0AAE/view");
-		Thread.sleep(10000);
+			Thread.sleep(10000);
 	   type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
 		System.out.println(type);
 	   ((JavascriptExecutor)driver).executeScript("scroll(0,100);");
