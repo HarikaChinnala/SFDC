@@ -271,7 +271,8 @@ driver.navigate().refresh();
 	 	//opportunity type	
 //		JavascriptExecutor js = (JavascriptExecutor) driver;
 		((JavascriptExecutor)driver).executeScript("scroll(0,500);");
-	 		a.doubleClick(driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div"))).build().perform();;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div/button")));
+	 //		a.doubleClick(driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::div)/following-sibling::div"))).build().perform();;
 		Thread.sleep(10000);
 		//js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div")));
 		WebElement opp=driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div[1]/lightning-base-combobox/div/div[1]/input"));
