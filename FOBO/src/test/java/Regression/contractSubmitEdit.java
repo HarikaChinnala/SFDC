@@ -34,7 +34,6 @@ public class contractSubmitEdit extends Base {
 	@Test(priority=1)
 	public void Submitedit() throws IOException, InterruptedException
 	{
-		
 		driver= initialiseDriver();
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		contractPage c= new contractPage(driver);
