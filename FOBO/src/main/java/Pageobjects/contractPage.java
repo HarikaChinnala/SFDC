@@ -166,6 +166,37 @@ public WebElement Chevron_SubmissionUnderReview;
 @FindBy(xpath="//table[@role='grid']/tbody/tr/td[3]/span/a[contains(@title,'Contract Submission')]/parent::span/parent::td/preceding-sibling::th/span/a")
 public WebElement Case_SubmitForSignature;
 
+@FindBy(xpath="(//*[starts-with(text(),'Opportunity')]//parent::div)/following-sibling::div/span")
+public WebElement opportunityname;
+
+@FindBy(xpath="(//*[contains(text(),'Account Name')]//parent::div)/following-sibling::div/span//a")
+public WebElement accountname;
+
+@FindBy(xpath="(//*[contains(text(),'Selling Lane')]//parent::div)/following-sibling::div/span")
+public WebElement sellinglane;
+
+@FindBy(xpath="(//*[contains(text(),'Entity')]//parent::div)/following-sibling::div/span")
+public WebElement entity;
+
+@FindBy(xpath="(//*[contains(text(),'MSA Date')]//parent::div)/following-sibling::div/span")
+public WebElement msadate;
+
+@FindBy(xpath="(//*[contains(text(),'Service Order Date')]//parent::div)/following-sibling::div/span")
+public WebElement serviceorderdate;
+
+@FindBy(xpath="(//*[contains(text(),'Quote')]//parent::div)/following-sibling::div/span")
+public WebElement quote;
+
+@FindBy(xpath="(//*[contains(text(),'Original Contract Term (months)')]//parent::div)/following-sibling::div/span")
+public WebElement term;
+
+@FindBy(xpath="(//*[contains(text(),'Primary Contact')]//parent::div)/following-sibling::div/span//a")
+public WebElement primecontact;
+
+@FindBy(xpath="(//*[contains(text(),'Billing Contact')]//parent::div)/following-sibling::div/span//a")
+public WebElement billcontact;
+
+
 
 public contractPage(WebDriver driver) {
 	// TODO Auto-generated constructor stub
@@ -375,6 +406,39 @@ public WebElement getFiles(){
 	public WebElement Case_SubmitForSignature(){
 		return Case_SubmitForSignature;
 	}
+	
+	public WebElement getopportunityname(){
+		return opportunityname;
+}
+	
+	public WebElement getaccountname(){
+		return accountname;
+}
 
+	public WebElement getsellinglane(){
+		return sellinglane;
+}
+	public WebElement getentity(){
+		return entity;
+}
+	public WebElement getmsadate(){
+		return msadate;
+}
+	public WebElement getservicedate(){
+		return serviceorderdate;
+}
+	public WebElement getquote(){
+		return quote;
+}
+	public WebElement getterm(){
+		return term;
+}
+	public WebElement getprimecontact(){
+		return primecontact;
+}
+	public WebElement getbillcontact(){
+		return billcontact;
+}
+	
 	
 }

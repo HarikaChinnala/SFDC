@@ -46,7 +46,6 @@ public class eSignature extends Base {
 		
 		driver= initialiseDriver();
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		createContract cc=new createContract();
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.profile-link-label.logout.uiOutputURL")));

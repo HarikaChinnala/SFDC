@@ -92,6 +92,39 @@ public WebElement acvcommitted;
 @FindBy(xpath="(//*[starts-with(text(),'Incremental ACV Total')]//parent::div)/following-sibling::div//lightning-formatted-text")
 public WebElement acvtotal;
 
+@FindBy(xpath="(//*[contains(text(),'Opportunity Name')]//parent::div)/following-sibling::div/span/slot/slot")
+public WebElement opportunityname;
+
+@FindBy(xpath="(//*[contains(text(),'Account Name')]//parent::div)/following-sibling::div/span/slot/slot//a")
+public WebElement accountname;
+
+@FindBy(xpath="(//*[contains(text(),'Selling Lane')]//parent::div)/following-sibling::div/span/slot/slot/lightning-formatted-text")
+public WebElement sellinglane;
+
+@FindBy(xpath="(//*[contains(text(),'Entity')]//parent::div)/following-sibling::div/span/slot/slot/lightning-formatted-text")
+public WebElement entity;
+
+@FindBy(xpath="(//*[contains(text(),'MSA Date')]//parent::div)/following-sibling::div/span/slot/slot/lightning-formatted-text")
+public WebElement msadate;
+
+@FindBy(xpath="(//*[contains(text(),'Service Order Date')]//parent::div)/following-sibling::div/span/slot/slot/lightning-formatted-text")
+public WebElement serviceorderdate;
+
+@FindBy(xpath="(//*[contains(text(),'Primary Quote')]//parent::div)/following-sibling::div/span/slot/slot/force-lookup/div//a")
+public WebElement quote;
+
+@FindBy(xpath="(//*[contains(text(),'Primary Quote Term')]//parent::div)/following-sibling::div/span/slot/slot/lightning-formatted-number")
+public WebElement term;
+
+@FindBy(xpath="(//*[contains(text(),'Primary Contact')]//parent::div)/following-sibling::div/span/slot/slot/force-lookup//a")
+public WebElement primecontact;
+
+@FindBy(xpath="(//*[contains(text(),'Billing Contact')]//parent::div)/following-sibling::div/span/slot/slot/force-lookup//a")
+public WebElement billcontact;
+
+@FindBy(xpath="(//*[contains(text(),'Currency')]//parent::div)/following-sibling::div/span/slot/slot/force-lookup//a")
+public WebElement currency;
+
 
 public oppPage(WebDriver driver) {
 	// TODO Auto-generated constructor stub
@@ -206,13 +239,48 @@ public WebElement getagreementstat(){
 	
 	public WebElement getacvcommitted(){
 		return acvcommitted;
+		
 }	
 	public WebElement getacvtotal(){
 		return acvtotal;
 }
-	
-	
 	public WebElement getcontractSync(){
 		return contractSync;
 }
+	public WebElement getopportunityname(){
+		return opportunityname;
+}
+	
+	public WebElement getaccountname(){
+		return accountname;
+}
+
+	public WebElement getsellinglane(){
+		return sellinglane;
+}
+	public WebElement getentity(){
+		return entity;
+}
+	public WebElement getmsadate(){
+		return msadate;
+}
+	public WebElement getservicedate(){
+		return serviceorderdate;
+}
+	public WebElement getquote(){
+		return quote;
+}
+	public WebElement getterm(){
+		return term;
+}
+	public WebElement getprimecontact(){
+		return primecontact;
+}
+	public WebElement getbillcontact(){
+		return billcontact;
+}
+	public WebElement getcurrency(){
+		return currency;
+}
+
 }

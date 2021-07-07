@@ -279,7 +279,7 @@ driver.navigate().refresh();
 		//opp.click();
 		js.executeScript("arguments[0].click();", opp);
 		Thread.sleep(2000);
-		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[@data-value='Upgrade']")));	
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("(//*[contains(text(),'Opportunity Type')]//parent::label)/following-sibling::div/lightning-base-combobox/div/div[2]/lightning-base-combobox-item[@data-value="+amendtype+"]")));	
 		Thread.sleep(1000);
 		
 		//product/usecase

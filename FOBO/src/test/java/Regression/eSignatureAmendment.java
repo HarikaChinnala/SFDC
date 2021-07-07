@@ -42,7 +42,6 @@ public class eSignatureAmendment extends Base {
 		reusablemethods rm= new reusablemethods(driver);
 		oppPage op= new oppPage(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		createAmendmentOpportunity cap=new createAmendmentOpportunity();
 		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='User']")));
 		Thread.sleep(5000);
 		js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.profile-link-label.logout.uiOutputURL")));

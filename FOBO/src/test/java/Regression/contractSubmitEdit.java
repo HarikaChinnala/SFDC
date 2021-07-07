@@ -37,7 +37,6 @@ public class contractSubmitEdit extends Base {
 		
 		driver= initialiseDriver();
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		createContract cc=new createContract();
 		contractPage c= new contractPage(driver);
 		driver.get(contracturl);
 		type= driver.findElement(By.xpath("//*[@class='test-id__field-label'][starts-with(text(),'Type')]//parent::div/following-sibling::div/span/span")).getText();
@@ -102,6 +101,32 @@ public class contractSubmitEdit extends Base {
 		//Contract_Status
 		System.out.println("Contract Status after doing Submit Edit = " +c.Contract_Status().getText());
 		Assert.assertEquals(c.Contract_Status().getText(), "Edit Under Review");
+		// code to check error message 
+		c.Dropdown().click();
+		Thread.sleep(5000);
+		js.executeScript("arguments[0].click();", c.SubmitForSignature());
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//div[@id='parent_Signature_Tool__c2']/div/div")).click();
+		driver.findElement(By.xpath("//*[@title='Neustar Adobe Signature']")).click();
+		Thread.sleep(3000);
+		//driver.findElement(By.xpath("(//*[@class='select'])[2]")).click();
+		driver.findElement(By.xpath("//div[@id='parent_Signing_Order__c2']/div/div")).click();
+		driver.findElement(By.xpath("//*[@title='Customer then Neustar']")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@class='slds-form-element']/div/textarea")).sendKeys("eSignature");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@type='submit']")).click();
+		System.out.print("Error message when trying to do Submit for signature without approving Approval records: ");
+		geterrormessage();
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='Close']")));
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='Close this window']")));
+		Thread.sleep(10000);
+		c.getdropdown().click();
+		js.executeScript("arguments[0].click();", c.getesign());
+		System.out.print("Error message when trying to do eSignature without approving Approval records: ");
+		geterrormessage();
+		js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[@title='Close']")));
+		Thread.sleep(10000);
 		
 		c.Related_Tab().click();
 		if(type.equals("Service Order")){
@@ -161,6 +186,8 @@ public class contractSubmitEdit extends Base {
 		
 		driver.navigate().back();
 		Thread.sleep(10000);
+		
+		
 		
 		
 		//logout fron existing user
@@ -319,6 +346,14 @@ public class contractSubmitEdit extends Base {
 	        
 		
 	}	
+	public void geterrormessage() {
+		WebElement msg = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']/div/div/div/div/span"));
+		waitForWebElementPresent(msg);
+		String msgct = msg.getText();
+		WebElement sm = driver.findElement(By.xpath("//*[@class='forceVisualMessageQueue']"));
+		//if (sm.getText().contains("Error"))
+			System.out.println(msgct);
 	
 	}
 	
+}

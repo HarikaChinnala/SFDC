@@ -87,7 +87,10 @@ public class Base {
 	protected String terminationcomments;
 	protected String cancdate;
 	protected String subid;
-	
+	protected String amendtype;
+	protected String pendingcasestatus;
+	protected String escalatedcasestatus;
+	protected String closedcasestatus;
 
 	public	Properties prop = new Properties();
 	
@@ -194,6 +197,10 @@ public class Base {
 		terminationcomments=prop.getProperty("terminationcomments");
 		cancdate=prop.getProperty("cancdate");
 		subid=prop.getProperty("subid");
+		amendtype=prop.getProperty("amendtype");
+		pendingcasestatus=prop.getProperty("pendingcasestatus");
+		escalatedcasestatus=prop.getProperty("escalatedcasestatus");
+		closedcasestatus=prop.getProperty("closedcasestatus");
 		//FileOutputStream fout = new FileOutputStream("C://Users//966790//git//newrepo//FOBO//src//main//java//Regression//data.properties");
 		
 		return driver;

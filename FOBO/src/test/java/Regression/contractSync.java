@@ -1,6 +1,8 @@
 package Regression;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -25,35 +27,36 @@ public class contractSync extends Base {
 		oppPage op = new oppPage(driver);
 		createOpportunity copp = new createOpportunity();
 		createQuoteandConfigure cqc = new createQuoteandConfigure();
+//		
+//		  copp.createOpportunity();
+//		  
+//		  
+//		  
+//		  cqc.createQuote(); 
+//		  cqc.configureQuote(); 
+//		  cqc.generatequoteproposal();
+//		  cqc.approveQuote();
+//		  
+//		 createContract cc = new createContract(); 
+//		 cc.createContract();
 		
-		  copp.createOpportunity();
-		  
-		  
-		  
-		  cqc.createQuote(); 
-		  cqc.configureQuote(); 
-		  cqc.generatequoteproposal();
-		  cqc.approveQuote();
-		  
-		 createContract cc = new createContract(); 
-		 cc.createContract();
-		
-		driver = initialiseDriver();
-		
-		String oldquote =quote;
-		System.out.println("Quote1 is : " + oldquote);
-		driver.get(contracturl);
-		Thread.sleep(10000);
-		String filename1 = gendoc();
-		System.out.println(filename1);
-		driver.close();  
-		
-		cqc.createQuote();
-		cqc.configureQuote();
-		cqc.generatequoteproposal();
-		cqc.approveQuote();
+//		driver = initialiseDriver();
+//		
+//		String oldquote =quote;
+//		System.out.println("Quote1 is : " + oldquote);
+//		driver.get(contracturl);
+//		Thread.sleep(10000);
+//		String filename1 = gendoc();
+//		System.out.println(filename1);
+//		driver.close();  
+//		
+//		cqc.createQuote();
+//		cqc.configureQuote();
+//		cqc.generatequoteproposal();
+//		cqc.approveQuote();
 		// write code to load opp page
 		driver = initialiseDriver();
+		String oldquote="Q-11137";
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		oppPage op1 = new oppPage(driver);
 		driver.get(contracturl);
@@ -62,6 +65,13 @@ public class contractSync extends Base {
 				driver.findElement(By.xpath("//*[@class='slds-form-element__control']/div/div/a")));
 
 		Thread.sleep(10000);
+		// write code to add validation for contracted checkbox
+		WebElement checkbox=driver.findElement(By.xpath("(//*[contains(text(),'Contracted')]//parent::div)/following-sibling::div/span"));
+		if(checkbox.isSelected()){
+			System.out.println("Checkbox is checked");
+		Assert.assertTrue(false);}
+		else
+			System.out.println("Checkbox is not checked");
 		// write code to check primary quote
 
 		String newquote = driver.findElement(By.xpath("//*[@title='Edit Primary Quote']/preceding-sibling::span//div/a")).getText();
@@ -116,6 +126,19 @@ public class contractSync extends Base {
 				System.out.println("Contract sync is successful");
 				driver.navigate().refresh();
 				Thread.sleep(15000);
+				String stat= driver.findElement(By.xpath("//*[@title='Status']/following-sibling::div")).getText();
+		        System.out.println("Contract Status is:"+stat);
+		        // to be sent to data.prop file
+		        String  curl = driver.getCurrentUrl();
+		       String  id1= driver.findElement(By.xpath("(//*[contains(text(),'Contract Number')]//parent::div)/following-sibling::div/span/span")).getText();
+		        System.out.println("Contractid is:"+id);
+		        System.out.println("Contracturl is:"+curl);
+		        prop.setProperty("contractid", id1);
+		        prop.setProperty("contracturl", curl);
+				try (final OutputStream outputstream = new FileOutputStream("src/main/java/Regression/data.properties");) {
+					prop.store(outputstream, "File Updated");
+					outputstream.close();
+				}
 				String filename2 = gendoc();
 				System.out.println(filename2);
 				 driver.navigate().refresh();
