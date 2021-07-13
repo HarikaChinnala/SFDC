@@ -27,36 +27,35 @@ public class contractSync extends Base {
 		oppPage op = new oppPage(driver);
 		createOpportunity copp = new createOpportunity();
 		createQuoteandConfigure cqc = new createQuoteandConfigure();
-//		
-//		  copp.createOpportunity();
-//		  
-//		  
-//		  
-//		  cqc.createQuote(); 
-//		  cqc.configureQuote(); 
-//		  cqc.generatequoteproposal();
-//		  cqc.approveQuote();
-//		  
-//		 createContract cc = new createContract(); 
-//		 cc.createContract();
 		
-//		driver = initialiseDriver();
-//		
-//		String oldquote =quote;
-//		System.out.println("Quote1 is : " + oldquote);
-//		driver.get(contracturl);
-//		Thread.sleep(10000);
-//		String filename1 = gendoc();
-//		System.out.println(filename1);
-//		driver.close();  
-//		
-//		cqc.createQuote();
-//		cqc.configureQuote();
-//		cqc.generatequoteproposal();
-//		cqc.approveQuote();
-		// write code to load opp page
+		  copp.createOpportunity();
+		  
+		  
+		  
+		  cqc.createQuote(); 
+		  cqc.configureQuote(); 
+		  cqc.generatequoteproposal();
+		  cqc.approveQuote();
+		  
+		 createContract cc = new createContract(); 
+		 cc.createContract();
+		
 		driver = initialiseDriver();
-		String oldquote="Q-11137";
+		
+		String oldquote =quote;
+		System.out.println("Quote1 is : " + oldquote);
+		driver.get(contracturl);
+		Thread.sleep(10000);
+		String filename1 = gendoc();
+		System.out.println(filename1);
+		driver.close();  
+		
+		cqc.createQuote();
+		cqc.configureQuote();
+		cqc.generatequoteproposal();
+		cqc.approveQuote();
+		write code to load opp page
+		driver = initialiseDriver();
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		oppPage op1 = new oppPage(driver);
 		driver.get(contracturl);
