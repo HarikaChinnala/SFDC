@@ -54,7 +54,7 @@ public class contractSync extends Base {
 		cqc.configureQuote();
 		cqc.generatequoteproposal();
 		cqc.approveQuote();
-		write code to load opp page
+		//write code to load opp page
 		driver = initialiseDriver();
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		oppPage op1 = new oppPage(driver);
